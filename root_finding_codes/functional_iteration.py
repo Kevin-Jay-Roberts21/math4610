@@ -1,20 +1,24 @@
-def g1(x):
-    gval = x - (x*x - 5*x + 6)
-    return gval
+import numpy as np
 
-def g2(x):
-    gval = x + (x * x - 5 * x + 6)
-    return gval
+# def g(x):
+#     gval = x - (x*np.exp(-x))
+#     return gval
 
-x10 = 1.95
-x20 = 2.01
-for k in range(1, 10):
-    x11 = g1(x10)
-    x10 = x11
+def functional_iteration(g, x00, x11):
 
-    x21 = g2(x20)
-    x20 = x21
+    x0 = x00
+    x1 = x11
+    for k in range(1, 10):
+        x1 = float(eval(g))
+        x0 = x1
 
+    print(x1, g)
 
-print(x11, g1(x11))
-print(x21, g2(x21))
+def bisection():
+    pass
+
+def newtons_method():
+    pass
+
+def secant_method():
+    pass
