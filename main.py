@@ -12,11 +12,11 @@ from root_finding_codes.root_finding_functions import *
 # it's not defined. x0 is defined so we use it.
 
 # Task 1 and 2
-fixed_point("x0 - (x0*np.exp(-x0))", 0.0003165, 0.0000001, 10)
+fixed_point("x0 - (x0*np.exp(-x0))", -1.1, 0.0000001, 10)
 
 # Task 3
-fixed_point("10.14 * np.exp(x0*x0) * np.cos(np.pi / x0)", -1.9, 0.0001, 10)
+#fixed_point("10.14 * np.exp(x0*x0) * np.cos(np.pi / x0)", -1.9, 0.0001, 10)
 
 # Task 4
-bisection("x0 - (x0*np.exp(-x0))", -5, 5, 0.0001)
-bisection("10.14 * np.exp(x0*x0) * cos(np.pi / x0)", -5, 5, 0.0001)
+#bisection("x0 - (x0*np.exp(-x0))", -5, 5, 0.0001)
+#bisection("10.14 * np.exp(x0*x0) * cos(np.pi / x0)", -5, 5, 0.0001)
