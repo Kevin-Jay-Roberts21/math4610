@@ -55,8 +55,37 @@ def fixed_point(f, initialx, tol, maxiter):
     print()
     print()
 
-def bisection(f, endpointA, endpointB, tol):
-    pass
+def bisection(f, a, b, tol):
+
+    # Initializing the starting variables
+    x0 = a
+    fa = float(eval(f))
+    x0 = b
+    fb = float(eval(f))
+    k = (int)((np.log(tol/(b-a)))/(np.log(.5)) + 1) # this was given in the assignment and computed in class
+
+    # note that we don't have to consider error here because it's taken into account in k
+    print("Results from bisection method:")
+    print("{:<25} {:<25}".format('Iterations', 'Approx. Root Location'))
+
+    for iterations in range(1, k):
+        c = .5 * (a + b)
+        print("{:<25} {:<25}".format(iterations, "{:.10f}".format(c)))
+        x0 = c
+        if c == 0:
+            print("Final Approximation: " + str(c))
+            return c
+        fc = float(eval(f))
+        if fa * fc < 0:
+            b = c
+            fb = fc
+        else:
+            a = c
+            fa = fc
+        iterations += 1
+
+    print("Final Approximation: " + str(c))
+    return c
 
 def newtons_method():
     pass
