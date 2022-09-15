@@ -1,5 +1,7 @@
 # Homework 1
 
+The coding modules I used are displayed at the bottom of this file in the appendix. I have created a python file called root_finding_functions.py where all of the root finding methods are stored and I've added a main.py file which is what I used to import the root funcing functions and test them with various initial approximations. See the appendix at the bottom of this file, or view my github repository to see the code I wrote for this assignment.
+
 ## Task 1
 
 ## Task 2 
@@ -28,9 +30,88 @@ print("Final Approximation: " + "{:.10f}".format(x1))
 
 ## Task 4
 
+To start this task, I created two functions in the ``main.py`` file:
+
+``bisection("x0*np.exp(-x0)", -100, 5, 0.0001)``
+
+``bisection("10.14 * np.exp(x0*x0) * np.cos(np.pi / x0)", -2.1, 5, 0.0001)``
+
+These parameters include the function, the endpoint (a and b) and the tolerance. Also, I've included ``x0`` into the inputted function, and it'll be used later on as we plug in values. Now let's get into the bisection function itself: 
+
+````
+def bisection(f, a, b, tol):
+
+    # Initializing the starting variables
+    x0 = a
+    fa = float(eval(f))
+    x0 = b
+    fb = float(eval(f))
+    k = (int)((np.log(tol/(b-a)))/(np.log(.5)) + 1) # this was given in the assignment and computed in class
+
+    # note that we don't have to consider error here because it's taken into account in k
+    print("Results from bisection method:")
+    print("{:<25} {:<25}".format('Iterations', 'Approx. Root Location'))
+
+    for iterations in range(1, k):
+        c = .5 * (a + b)
+        print("{:<25} {:<25}".format(iterations, "{:.10f}".format(c)))
+        x0 = c
+        if c == 0:
+            print("Final Approximation: " + str(c))
+            break
+        fc = float(eval(f))
+        if fa * fc < 0:
+            b = c
+            fb = fc
+        else:
+            a = c
+            fa = fc
+
+    print("Final Approximation: " + str(c))
+````
+
+As you can see the first 8 lines of code is just initialization. The reason I set x0 equal to a and then defined fa was because qhen we do a ``float(eval(f))``, it only recognizes the x0 variable, thus we have to set our ``x0 = a``, then define ``fa``. The same is done for ``fb``. Furthemore, we define ``k`` and will use it to account for the number of iterations we go through. 
+
+The next few lines are print statements and then we begin the for loop from 1 to k. in the loops we need to define a ``c`` which will be our midpoint value. Then we add a print statement to let the user know where we're at. After this we want to evaluate ``f`` at ``c`` but we MUST make sure ``c`` is not equal to 0 because we cannot divide by 0 in our second bisection function call. After this, we continue with more if statments.
+
+In the next if statement, we want to check if f evaluate at a times f evaluated at c is greater than 0. If it is, then we reset b and fb and if not, we reset a and fa.
+
+This method will always work because it's just cutting the interval in half and will get ever closer to the root. However, this method may take many many iterations, thus it can be seen as a brute force solution.
 
 ## Task 5
 
 I have completed task 5, in that I've added you as a collaborator to my github repository and have published all of my code and notes, including this homework1.md file. My repository can be found at the following link: 
 
 https://github.com/Kevin-Jay-Roberts21/math4610
+
+### Appendix
+Code I wrote for this assignment:
+
+#### main.py
+
+````
+from root_finding_codes.root_finding_functions import *
+
+
+# The first two calls are the fixed point functional iteration methods. My
+# parameters are in order as follows (for the fixed point functions):
+# 1. f function 2. initial root guess 3. tolerance 4. maximum iterations.
+# the third function call is the bisection method and the parameters are
+# in order as follows: 1. f function 2. end point a 3. end point b 4. tolerance.
+
+# The reason I use x0 in the functions is because x0 is defined to be a value in
+# the functions. If I used a simple x instead, then it would not be recognized because
+# it's not defined. x0 is defined so we use it.
+
+# Task 1 and 2
+fixed_point("x0*np.exp(-x0)", -1.1, 0.0000001, 10)
+
+# Task 3
+fixed_point("10.14 * np.exp(x0*x0) * np.cos(np.pi / x0)", -1.9, 0.0001, 10)
+
+# Task 4
+bisection("x0*np.exp(-x0)", -100, 5, 0.0001)
+bisection("10.14 * np.exp(x0*x0) * np.cos(np.pi / x0)", -2.1, 5, 0.0001)
+````
+
+#### root_finding_functions.py

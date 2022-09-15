@@ -74,7 +74,7 @@ def bisection(f, a, b, tol):
         x0 = c
         if c == 0:
             print("Final Approximation: " + str(c))
-            return c
+            break
         fc = float(eval(f))
         if fa * fc < 0:
             b = c
@@ -82,10 +82,8 @@ def bisection(f, a, b, tol):
         else:
             a = c
             fa = fc
-        iterations += 1
 
     print("Final Approximation: " + str(c))
-    return c
 
 def newtons_method():
     pass
