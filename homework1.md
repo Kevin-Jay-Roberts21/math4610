@@ -160,7 +160,8 @@ def bisection(f, a, b, tol):
     fa = float(eval(f))
     x0 = b
     fb = float(eval(f))
-    k = (int)((np.log(tol/(b-a)))/(np.log(.5)) + 1) # this was given in the assignment and computed in class
+    # this was given in the assignment and computed in class
+    k = (int)((np.log(tol/(b-a)))/(np.log(.5)) + 1) 
 
     # note that we don't have to consider error here because it's taken into account in k
     print("Results from bisection method:")
@@ -232,7 +233,7 @@ bisection("10.14 * np.exp(x0*x0) * np.cos(np.pi / x0)", -2.1, 5, 0.0001)
 
 #### root_finding_functions.py
 
-````
+```
 import numpy as np
 
 # iteration functions. These functions will be using for the fixed point root finding problems
@@ -303,7 +304,8 @@ def bisection(f, a, b, tol):
     fa = float(eval(f))
     x0 = b
     fb = float(eval(f))
-    k = (int)((np.log(tol/(b-a)))/(np.log(.5)) + 1) # this was given in the assignment and computed in class
+    # this was given in the assignment and computed in class
+    k = (int)((np.log(tol/(b-a)))/(np.log(.5)) + 1)
 
     # note that we don't have to consider error here because it's taken into account in k
     print("Results from bisection method:")
@@ -331,4 +333,4 @@ def newtons_method():
 
 def secant_method():
     pass
-````
+```
