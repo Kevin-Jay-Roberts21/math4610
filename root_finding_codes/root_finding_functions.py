@@ -2,10 +2,10 @@ import numpy as np
 
 # iteration functions. These functions will be using for the fixed point root finding problems
 def g1(f, x):
-    gval = x - f
+    gval = np.abs(x - f)
     return gval
 def g2(f, x):
-    gval = x + f
+    gval = np.abs(np.exp(-x) - 1 - f)
     return gval
 
 # fixed point root finding method
