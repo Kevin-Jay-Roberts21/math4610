@@ -1,11 +1,15 @@
 import numpy as np
 
 # iteration functions. These functions will be using for the fixed point root finding problems
+def g(f, x):
+    epsilon = 0.0001
+    gval = x - epsilon*f
+    return gval
 def g1(f, x):
     gval = np.abs(x - f)
     return gval
 def g2(f, x):
-    gval = np.abs(np.exp(-x) - 1 - f)
+    gval = np.abs(np.exp(-x) - f)
     return gval
 
 # fixed point root finding method
@@ -24,7 +28,8 @@ def fixed_point(f, initialx, tol, maxiter):
     # Starting the while loop. If the error is greater than the tolerance and if the iterations
     # is greater than the maximum number of iterations, then the loop will continue.
     while (error > tol and iterations < maxiter):
-        x1 = g1(float(eval(f)), x0) # setting x1 value using g1 iteration function
+        x1 = g1(float(eval(f)), x0) # setting x1 value using g1 iteration function, used for Task 1
+        # x1 = g(float(eval(f)), x0) # used for Task 3
         error = np.abs(x1 - x0) # computing the absolute value of the error
         # printing iteration #, root approx, and error
         print("{:<25} {:<25} {:<25}".format(iterations, "{:.10f}".format(x1), "{:.10f}".format(error)))
@@ -44,7 +49,8 @@ def fixed_point(f, initialx, tol, maxiter):
     print("Results from g2 iteration method:")
     print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
     while (error > tol and iterations < maxiter):
-        x1 = g2(float(eval(f)), x0)
+        x1 = g2(float(eval(f)), x0) # setting x1 value using g1 iteration function, used for Task 1
+        # x1 = g(float(eval(f)), x0)  # used for Task 3
         error = np.abs(x1 - x0)
         print("{:<25} {:<25} {:<25}".format(iterations, "{:.10f}".format(x1), "{:.10f}".format(error)))
         x0 = x1
