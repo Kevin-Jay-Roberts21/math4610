@@ -103,8 +103,8 @@ def newtons_method(f, x0, x1, tol, maxiter):
     print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
 
     while (error > tol and iter < maxiter):
-        x2 = x1 - (f0 / ((f1 - f0) / (x1 - x0)))
-        error = abs(x2 - x1)
+        x2 = x1 - (f1 / ((f1 - f0) / (x1 - x0)))
+        error = abs(x1 - x0)
         print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
         iter += 1
         x0 = x1
@@ -145,22 +145,34 @@ def bisection_newton_hybrid(f, a, b, tol, maxiter):
     iter = 0
     x0 = 0.5 * (a + b)
     x1 = b
+
+    x = x0
+    f0 = float(eval(f))
+    x = x1
+    f1 = float(eval(f))
+    print("Results from Bisection-Newton Hybrid Method:")
+    print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
     while (error > tol and iter < maxiter):
-        x = x0
-        f0 = float(eval(f))
-        x = x1
-        f1 = float(eval(f))
-        x1 = x0 - (f0 / ((f1 - f0) / (x1 - x0)))
+        if f1-f0 == 0 or x1 - x0 == 0:
+            # cannot divide by 0. Break out of the loop is this happens
+            break
+        x2 = x1 - (f1 / ((f1 - f0) / (x1 - x0))) # this needs to be fixed
         newterror = abs(x1 - x0)
         if newterror > error:
+
             x = a
             fa = float(eval(f))
             x = b
             fb = float(eval(f))
+            print("The Newton Error is greater than the general error!")
+            print("Switching to Bisection method:")
+            print()
+            print("{:<25} {:<25}".format('Iterations', 'Approx. Root Location'))
             for i in range(1, 4):
                 c = 0.5 * (a + b)
                 x = c
                 fc = float(eval(f))
+                print("{:<25} {:<25}".format(i+iter, "{:.10f}".format(c)))
                 if fa * fc < 0:
                     b = c
                     fb = fc
@@ -168,35 +180,54 @@ def bisection_newton_hybrid(f, a, b, tol, maxiter):
                     a = c
                     fa = fc
             error = abs(b - a)
+            iter += 4
+            print("Exiting the bisection method:")
         else:
             x0 = x1
             error = newterror
+        print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
         iter += 1
         x0 = 0.5 * (a + b)
+        x1 = x2
+        f0 = f1
+        x = x1
+        f1 = float(eval(f))
 
-    print(x1)
+    print("Final Approximation: " + str(x1))
 
 def bisection_secant_hybrid(f, a, b, tol, maxiter):
     error = 10.0 * tol
     iter = 0
     x0 = 0.5 * (a + b)
     x1 = b
+
+    x = x0
+    f0 = float(eval(f))
+    x = x1
+    f1 = float(eval(f))
+    print("Results from Bisection-Newton Hybrid Method:")
+    print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
     while (error > tol and iter < maxiter):
-        x = x0
-        f0 = float(eval(f))
-        x = x1
-        f1 = float(eval(f))
-        x1 = x0 - (f1 * (x1 - x0)/(f1 - f0))
-        newterror = abs(x1 - x0)
-        if newterror > error:
+        if f1-f0 == 0:
+            # cannot divide by 0. Break out of the loop is this happens
+            break
+        x2 = x1 - (f1 * (x1 - x0)/(f1 - f0))
+        secanterror = abs(x2 - x1)
+        if secanterror > error:
+
             x = a
             fa = float(eval(f))
             x = b
             fb = float(eval(f))
+            print("The Secant Error is greater than the general error!")
+            print("Switching to Bisection method:")
+            print()
+            print("{:<25} {:<25}".format('Iterations', 'Approx. Root Location'))
             for i in range(1, 4):
                 c = 0.5 * (a + b)
                 x = c
                 fc = float(eval(f))
+                print("{:<25} {:<25}".format(i+iter, "{:.10f}".format(c)))
                 if fa * fc < 0:
                     b = c
                     fb = fc
@@ -204,12 +235,17 @@ def bisection_secant_hybrid(f, a, b, tol, maxiter):
                     a = c
                     fa = fc
             error = abs(b - a)
+            iter+=4
+            print("Exiting the bisection method:")
         else:
             x0 = x1
-            error = newterror
+            error = secanterror
+        print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
         iter += 1
-        x0 = 0.5 * (a + b)
+        x0 = x1
+        x1 = x2
+        f0 = f1
+        x = x1
+        f1 = float(eval(f))
 
-    print(x1)
-
-
+    print("Final Approximation: " + str(x1))

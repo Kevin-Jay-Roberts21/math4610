@@ -32,15 +32,15 @@ from root_finding_codes.root_finding_functions import *
 ####################
 
 # Task 1
-#newtons_method("x*np.exp(-x)", -1, -2, 0.000001, 10000)
+#newtons_method("x*np.exp(-x)", -1, 2, 0.000001, 100)
 
 # Task 2
 # Notes: (only works when both x0 < x1 and both are negative and close to each other)
 
-#secant_method("x*np.exp(-x)", 100, 101, 0.000001, 10000)
+#secant_method("x*np.exp(-x)", -5, -6, 0.000001, 10000)
 
 # Task 4
 #bisection_newton_hybrid("10.14 * np.exp(x*x) * np.cos(np.pi / x)", -3, 7, 0.00001, 20)
 
 # Task 5
-bisection_secant_hybrid("10.14 * np.exp(x*x) * np.cos(np.pi / x)", -3, 7, 0.00001, 20)
+#bisection_secant_hybrid("10.14 * np.exp(x*x) * np.cos(np.pi / x)", -3, 7, 0.00001, 20)
