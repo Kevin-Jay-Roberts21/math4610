@@ -32,15 +32,18 @@ from root_finding_codes.root_finding_functions import *
 ####################
 
 # Task 1
-#newtons_method("x*np.exp(-x)", -1, 2, 0.000001, 100)
+#newtons_method("x*np.exp(-x)", "-x*np.exp(-x) + np.exp(-x)", -10, 0.000001, 100)
 
 # Task 2
 # Notes: (only works when both x0 < x1 and both are negative and close to each other)
 
-#secant_method("x*np.exp(-x)", -5, -6, 0.000001, 10000)
+#secant_method("x*np.exp(-x)", -2, 2, 0.000001, 10000)
 
 # Task 4
-#bisection_newton_hybrid("10.14 * np.exp(x*x) * np.cos(np.pi / x)", -3, 7, 0.00001, 20)
+# passing in f, fprime, a, b, tol, and maxiter (interval (-2, 7) doesn't work for some reason)
+#bisection_newton_hybrid("10.14 * np.exp(x*x) * np.cos(np.pi / x)", "10.14*(2*np.exp(x*x)*x*np.cos(np.pi/x) + (np.pi*np.exp(x*x)*np.sin(np.pi/x))/(x*x))", -3, 7, 0.00001, 60)
+
 
 # Task 5
-#bisection_secant_hybrid("10.14 * np.exp(x*x) * np.cos(np.pi / x)", -3, 7, 0.00001, 20)
+# passing in f, a, b, tol, maxiter
+bisection_secant_hybrid("10.14 * np.exp(x*x) * np.cos(np.pi / x)", -3, 7, 0.00001, 20)

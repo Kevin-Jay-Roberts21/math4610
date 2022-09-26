@@ -91,11 +91,10 @@ def bisection(f, a, b, tol):
 
     print("Final Approximation: " + str(c))
 
-def newtons_method(f, x0, x1, tol, maxiter):
+def newtons_method(f, fprime, x0, tol, maxiter):
     x = x0
     f0 = float(eval(f))
-    x = x1
-    f1 = float(eval(f))
+    fp = float(eval(fprime))
     error = 10.0 * tol
     iter = 0
 
@@ -103,15 +102,14 @@ def newtons_method(f, x0, x1, tol, maxiter):
     print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
 
     while (error > tol and iter < maxiter):
-        x2 = x1 - (f1 / ((f1 - f0) / (x1 - x0)))
+        x1 = x0 - (f0 / fp)
         error = abs(x1 - x0)
         print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
         iter += 1
         x0 = x1
-        x1 = x2
-        f0 = f1
-        x = x1
-        f1 = float(eval(f))
+        x = x0
+        f0 = float(eval(f))
+        fp = float(eval(fprime))
 
     print("Final Approximation: " + str(x1))
 
@@ -139,27 +137,24 @@ def secant_method(f, x0, x1, tol, maxiter):
 
     print("Final Approximation: " + str(x1))
 
-def bisection_newton_hybrid(f, a, b, tol, maxiter):
+def bisection_newton_hybrid(f, fprime, a, b, tol, maxiter):
 
     error = 10.0 * tol
     iter = 0
     x0 = 0.5 * (a + b)
-    x1 = b
-
     x = x0
     f0 = float(eval(f))
-    x = x1
-    f1 = float(eval(f))
+    fp = float(eval(fprime))
+
     print("Results from Bisection-Newton Hybrid Method:")
     print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
     while (error > tol and iter < maxiter):
-        if f1-f0 == 0 or x1 - x0 == 0:
+        if fp == 0:
             # cannot divide by 0. Break out of the loop is this happens
             break
-        x2 = x1 - (f1 / ((f1 - f0) / (x1 - x0))) # this needs to be fixed
+        x1 = x0 - (f0 / fp)
         newterror = abs(x1 - x0)
         if newterror > error:
-
             x = a
             fa = float(eval(f))
             x = b
@@ -180,6 +175,7 @@ def bisection_newton_hybrid(f, a, b, tol, maxiter):
                     a = c
                     fa = fc
             error = abs(b - a)
+            x0 = c
             iter += 4
             print("Exiting the bisection method:")
         else:
@@ -187,11 +183,9 @@ def bisection_newton_hybrid(f, a, b, tol, maxiter):
             error = newterror
         print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
         iter += 1
-        x0 = 0.5 * (a + b)
-        x1 = x2
-        f0 = f1
-        x = x1
-        f1 = float(eval(f))
+        x = x0
+        f0 = float(eval(f))
+        fp = float(eval(fprime))
 
     print("Final Approximation: " + str(x1))
 
@@ -205,7 +199,7 @@ def bisection_secant_hybrid(f, a, b, tol, maxiter):
     f0 = float(eval(f))
     x = x1
     f1 = float(eval(f))
-    print("Results from Bisection-Newton Hybrid Method:")
+    print("Results from Bisection-Secant Hybrid Method:")
     print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
     while (error > tol and iter < maxiter):
         if f1-f0 == 0:
@@ -214,7 +208,6 @@ def bisection_secant_hybrid(f, a, b, tol, maxiter):
         x2 = x1 - (f1 * (x1 - x0)/(f1 - f0))
         secanterror = abs(x2 - x1)
         if secanterror > error:
-
             x = a
             fa = float(eval(f))
             x = b
@@ -227,7 +220,7 @@ def bisection_secant_hybrid(f, a, b, tol, maxiter):
                 c = 0.5 * (a + b)
                 x = c
                 fc = float(eval(f))
-                print("{:<25} {:<25}".format(i+iter, "{:.10f}".format(c)))
+                print("{:<25} {:<25}".format(i + iter, "{:.10f}".format(c)))
                 if fa * fc < 0:
                     b = c
                     fb = fc
@@ -235,14 +228,15 @@ def bisection_secant_hybrid(f, a, b, tol, maxiter):
                     a = c
                     fa = fc
             error = abs(b - a)
-            iter+=4
+            x0 = c
+            iter += 4
             print("Exiting the bisection method:")
         else:
             x0 = x1
             error = secanterror
         print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
         iter += 1
-        x0 = x1
+        #x0 = x1
         x1 = x2
         f0 = f1
         x = x1
