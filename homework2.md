@@ -2,19 +2,19 @@
 
 ## Task 1
 
-See Software Manual here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/newtons_method.md
+See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/newtons_method.md)
 
-See code function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py
+See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py)
 
-See function call in the main function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py
+See function call in the main function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
 
 ## Task 2
 
-See Software Manual here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/secant_method.md
+See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/secant_method.md)
 
-See code function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py
+See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py)
 
-See function call in the main function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py
+See function call in the main function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
 
 ## Task 3 
 This part of the assignment is inbedded inside of the functions. Instead of using verbose, I included some print statements inside the root finding functions. The following python code is a print statement to begin the list of numerical values: 
@@ -42,19 +42,19 @@ The outputted results for Newtons Method and the Hybrid Method are the following
 
 ## Task 4
 
-See Software Manual here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/bisection_newton_hybrid_method.md
+See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/bisection_newton_hybrid_method.md)
 
-See code function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py
+See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py)
 
-See function call in the main function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py 
+See function call in the main function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
 
 ## Task 5
 
-See Software Manual here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/bisection_secant_hybrid_method.md
+See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/bisection_secant_hybrid_method.md)
 
-See code function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py
+See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py)
 
-See function call in the main function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py
+See function call in the main function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
 
 ### Appendix
 Code can be found in my repository: 

@@ -39,7 +39,7 @@ of iterations. Then we need to check if ``fp == 0``, is this is the case then we
 Further, if this happens, we know that we've found a root! We then proceed to apply newtons method and compute the error.
 After this is done, we must evaluate if Newton's Error is greater than the initial error (defined to be the bisection error).
 If so, we must proceed to find the root using the bisection method. More on the bisection method and how it works can be 
-found here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/bisection_method.md. After running through the bisection method, we have a new x0 approximation which will be used in 
+found [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/bisection_method.md). After running through the bisection method, we have a new x0 approximation which will be used in 
 next loop along with our redefined f0 and fp. Finally, when the loop conditions are met, we break out of the loop and print
 the final approximation.
 
