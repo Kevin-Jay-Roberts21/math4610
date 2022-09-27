@@ -13,7 +13,7 @@ def g2(f, x):
     return gval
 
 # fixed point root finding method
-def fixed_point(f, initialx, tol, maxiter):
+def functional_iteration(f, initialx, tol, maxiter):
 
     # initializing variables: x0, error and number of iterations
     error = 10.0 * tol
@@ -64,9 +64,9 @@ def fixed_point(f, initialx, tol, maxiter):
 def bisection(f, a, b, tol):
 
     # Initializing the starting variables
-    x0 = a
+    x = a
     fa = float(eval(f))
-    x0 = b
+    x = b
     fb = float(eval(f))
     k = (int)((np.log(tol/(b-a)))/(np.log(.5)) + 1) # this was given in the assignment and computed in class
 
@@ -77,10 +77,11 @@ def bisection(f, a, b, tol):
     for iterations in range(1, k):
         c = .5 * (a + b)
         print("{:<25} {:<25}".format(iterations, "{:.10f}".format(c)))
-        x0 = c
+
         if c == 0:
             print("Final Approximation: " + str(c))
             break
+        x = c
         fc = float(eval(f))
         if fa * fc < 0:
             b = c
@@ -127,7 +128,7 @@ def secant_method(f, x0, x1, tol, maxiter):
     while (error > tol and iter < maxiter):
         x2 = x1 - (f1 * (x1 - x0)/(f1 - f0))
         error = abs(x2 - x1)
-        print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
+        print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x2), "{:.10f}".format(error)))
         iter += 1
         x0 = x1
         x1 = x2
@@ -135,7 +136,7 @@ def secant_method(f, x0, x1, tol, maxiter):
         x = x1
         f1 = float(eval(f))
 
-    print("Final Approximation: " + str(x1))
+    print("Final Approximation: " + str(x2))
 
 def bisection_newton_hybrid(f, fprime, a, b, tol, maxiter):
 
@@ -194,11 +195,11 @@ def bisection_secant_hybrid(f, a, b, tol, maxiter):
     iter = 0
     x0 = 0.5 * (a + b)
     x1 = b
-
     x = x0
     f0 = float(eval(f))
     x = x1
     f1 = float(eval(f))
+
     print("Results from Bisection-Secant Hybrid Method:")
     print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
     while (error > tol and iter < maxiter):
