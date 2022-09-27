@@ -13,7 +13,7 @@ def g2(f, x):
     return gval
 
 # fixed point root finding method
-def functional_iteration(f, initialx, tol, maxiter):
+def fixed_point(f, initialx, tol, maxiter):
 
     # initializing variables: x0, error and number of iterations
     error = 10.0 * tol

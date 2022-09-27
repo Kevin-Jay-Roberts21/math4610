@@ -2,8 +2,19 @@
 
 ## Task 1
 
+See Software Manual here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/newtons_method.md
+
+See code function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py
+
+See function call in the main function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py
+
 ## Task 2
 
+See Software Manual here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/secant_method.md
+
+See code function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py
+
+See function call in the main function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py
 
 ## Task 3 
 This part of the assignment is inbedded inside of the functions. Instead of using verbose, I included some print statements inside the root finding functions. The following python code is a print statement to begin the list of numerical values: 
@@ -31,145 +42,198 @@ The outputted results for Newtons Method and the Hybrid Method are the following
 
 ## Task 4
 
+See Software Manual here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/bisection_newton_hybrid_method.md
+
+See code function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py
+
+See function call in the main function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py 
 
 ## Task 5
 
-I have completed task 5, in that I've added you as a collaborator to my github repository and have published all of my code and notes, including this homework1.md file. My repository can be found at the following link: 
+See Software Manual here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/bisection_secant_hybrid_method.md
 
-https://github.com/Kevin-Jay-Roberts21/math4610
+See code function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py
+
+See function call in the main function here: https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py
 
 ### Appendix
-Code I wrote for this assignment:
+Code can be found in my repository: 
 
-#### main.py
+All code I wrote for this assignment:
+
+root_finding_functions.py
 
 ````
-from root_finding_codes.root_finding_functions import *
+def newtons_method(f, fprime, x0, tol, maxiter):
+    x = x0
+    f0 = float(eval(f))
+    fp = float(eval(fprime))
+    error = 10.0 * tol
+    iter = 0
 
-# The first two calls are the fixed point functional iteration methods. My
-# parameters are in order as follows (for the fixed point functions):
-# 1. f function 2. initial root guess 3. tolerance 4. maximum iterations.
-# the third function call is the bisection method and the parameters are
-# in order as follows: 1. f function 2. end point a 3. end point b 4. tolerance.
+    print("Results from Newtons Method:")
+    print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
 
-# The reason I use x0 in the functions is because x0 is defined to be a value in
-# the functions. If I used a simple x instead, then it would not be recognized because
-# it's not defined. x0 is defined so we use it.
+    while (error > tol and iter < maxiter):
+        x1 = x0 - (f0 / fp)
+        error = abs(x1 - x0)
+        print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
+        iter += 1
+        x0 = x1
+        x = x0
+        f0 = float(eval(f))
+        fp = float(eval(fprime))
 
-# Task 1 and 2
-fixed_point("x0*np.exp(-x0)", 1.1, 0.0000001, 20)
+    print("Final Approximation: " + str(x1))
 
-# Task 3
-# Must uncomment out the Task 3 g lines in the fixed_point function (line 32 and 53) AND
-# comment out the g1() and g2() function calls in the fixed_point function (line 31 and 52)
-# before uncommenting the following line:
-#fixed_point("10.14 * np.exp(x0*x0) * np.cos(np.pi / x0)", 2.1, 0.0001, 1000)
+def secant_method(f, x0, x1, tol, maxiter):
+    x = x0
+    f0 = float(eval(f))
+    x = x1
+    f1 = float(eval(f))
+    error = 10.0 * tol
+    iter = 0
+
+    print("Results from Secant Method:")
+    print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
+
+    while (error > tol and iter < maxiter):
+        x2 = x1 - (f1 * (x1 - x0)/(f1 - f0))
+        error = abs(x2 - x1)
+        print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x2), "{:.10f}".format(error)))
+        iter += 1
+        x0 = x1
+        x1 = x2
+        f0 = f1
+        x = x1
+        f1 = float(eval(f))
+
+    print("Final Approximation: " + str(x2))
+
+def bisection_newton_hybrid(f, fprime, a, b, tol, maxiter):
+
+    error = 10.0 * tol
+    iter = 0
+    x0 = 0.5 * (a + b)
+    x = x0
+    f0 = float(eval(f))
+    fp = float(eval(fprime))
+
+    print("Results from Bisection-Newton Hybrid Method:")
+    print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
+    while (error > tol and iter < maxiter):
+        if fp == 0:
+            # cannot divide by 0. Break out of the loop is this happens
+            break
+        x1 = x0 - (f0 / fp)
+        newterror = abs(x1 - x0)
+        if newterror > error:
+            x = a
+            fa = float(eval(f))
+            x = b
+            fb = float(eval(f))
+            print("The Newton Error is greater than the general error!")
+            print("Switching to Bisection method:")
+            print()
+            print("{:<25} {:<25}".format('Iterations', 'Approx. Root Location'))
+            for i in range(1, 4):
+                c = 0.5 * (a + b)
+                x = c
+                fc = float(eval(f))
+                print("{:<25} {:<25}".format(i+iter, "{:.10f}".format(c)))
+                if fa * fc < 0:
+                    b = c
+                    fb = fc
+                else:
+                    a = c
+                    fa = fc
+            error = abs(b - a)
+            x0 = c
+            iter += 4
+            print("Exiting the bisection method:")
+        else:
+            x0 = x1
+            error = newterror
+        print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
+        iter += 1
+        x = x0
+        f0 = float(eval(f))
+        fp = float(eval(fprime))
+
+    print("Final Approximation: " + str(x1))
+
+def bisection_secant_hybrid(f, a, b, tol, maxiter):
+    error = 10.0 * tol
+    iter = 0
+    x0 = 0.5 * (a + b)
+    x1 = b
+    x = x0
+    f0 = float(eval(f))
+    x = x1
+    f1 = float(eval(f))
+
+    print("Results from Bisection-Secant Hybrid Method:")
+    print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
+    while (error > tol and iter < maxiter):
+        if f1-f0 == 0:
+            # cannot divide by 0. Break out of the loop is this happens
+            break
+        x2 = x1 - (f1 * (x1 - x0)/(f1 - f0))
+        secanterror = abs(x2 - x1)
+        if secanterror > error:
+            x = a
+            fa = float(eval(f))
+            x = b
+            fb = float(eval(f))
+            print("The Secant Error is greater than the general error!")
+            print("Switching to Bisection method:")
+            print()
+            print("{:<25} {:<25}".format('Iterations', 'Approx. Root Location'))
+            for i in range(1, 4):
+                c = 0.5 * (a + b)
+                x = c
+                fc = float(eval(f))
+                print("{:<25} {:<25}".format(i + iter, "{:.10f}".format(c)))
+                if fa * fc < 0:
+                    b = c
+                    fb = fc
+                else:
+                    a = c
+                    fa = fc
+            error = abs(b - a)
+            x0 = c
+            iter += 4
+            print("Exiting the bisection method:")
+        else:
+            x0 = x1
+            error = secanterror
+        print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
+        iter += 1
+        #x0 = x1
+        x1 = x2
+        f0 = f1
+        x = x1
+        f1 = float(eval(f))
+
+    print("Final Approximation: " + str(x1))
+````
+
+main.py
+
+````
+# Task 1
+newtons_method("x*np.exp(-x)", "-x*np.exp(-x) + np.exp(-x)", -3, 0.000001, 10)
+
+# Task 2
+# Notes: (only works when both x0 < x1 and both are negative and close to each other)
+secant_method("x*np.exp(-x)", -5, -1, 0.000001, 10)
 
 # Task 4
-bisection("x0*np.exp(-x0)", -100, 5, 0.0001)
-bisection("10.14 * np.exp(x0*x0) * np.cos(np.pi / x0)", -2.1, 5, 0.0001)
+# passing in f, fprime, a, b, tol, and maxiter (interval (-2, 7) doesn't work for some reason)
+bisection_newton_hybrid("10.14 * np.exp(x*x) * np.cos(np.pi / x)", "10.14*(2*np.exp(x*x)*x*np.cos(np.pi/x) + (np.pi*np.exp(x*x)*np.sin(np.pi/x))/(x*x))", -3, 7, 0.000001, 10)
+
+
+# Task 5
+# passing in f, a, b, tol, maxiter
+bisection_secant_hybrid("10.14 * np.exp(x*x) * np.cos(np.pi / x)", -3, 7, 0.00001, 20)
 ````
-
-#### root_finding_functions.py
-
-```
-import numpy as np
-
-# iteration functions. These functions will be using for the fixed point root finding problems
-def g(f, x):
-    epsilon = 0.0001
-    gval = x - epsilon*f
-    return gval
-def g1(f, x):
-    gval = np.abs(x - f)
-    return gval
-def g2(f, x):
-    gval = np.abs(np.exp(-x) - f)
-    return gval
-
-# fixed point root finding method
-def fixed_point(f, initialx, tol, maxiter):
-
-    # initializing variables: x0, error and number of iterations
-    error = 10.0 * tol
-    x0 = initialx
-    iterations = 0
-
-    # adding print statements for the output to let the user know which iteration method is
-    # being used and the iterations, root location and error.
-    print("Results from g1 iteration method:")
-    print("{:<25} {:<25} {:<25}".format('Iterations','Approx. Root Location','Error'))
-
-    # Starting the while loop. If the error is greater than the tolerance and if the iterations
-    # is greater than the maximum number of iterations, then the loop will continue.
-    while (error > tol and iterations < maxiter):
-        x1 = g1(float(eval(f)), x0) # setting x1 value using g1 iteration function, used for Task 1
-        # x1 = g(float(eval(f)), x0) # used for Task 3
-        error = np.abs(x1 - x0) # computing the absolute value of the error
-        # printing iteration #, root approx, and error
-        print("{:<25} {:<25} {:<25}".format(iterations, "{:.10f}".format(x1), "{:.10f}".format(error)))
-        x0 = x1 # resetting x0
-        iterations += 1 # increasing iteration
-    print("Final Approximation: " + "{:.10f}".format(x1)) # final approximation
-
-    # adding space for the outputs
-    print()
-    print()
-
-    # resetting initial variables to test convergence for g2
-    # the only difference from the code above is that in the following code we'll be using g2
-    error = 10.0 * tol
-    x0 = initialx
-    iterations = 0
-    print("Results from g2 iteration method:")
-    print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
-    while (error > tol and iterations < maxiter):
-        x1 = g2(float(eval(f)), x0) # setting x1 value using g1 iteration function, used for Task 1
-        # x1 = g(float(eval(f)), x0)  # used for Task 3
-        error = np.abs(x1 - x0)
-        print("{:<25} {:<25} {:<25}".format(iterations, "{:.10f}".format(x1), "{:.10f}".format(error)))
-        x0 = x1
-        iterations += 1
-    print("Final Approximation: " + "{:.10f}".format(x1))
-
-    # adding space for the outputs
-    print()
-    print()
-
-def bisection(f, a, b, tol):
-
-    # Initializing the starting variables
-    x0 = a
-    fa = float(eval(f))
-    x0 = b
-    fb = float(eval(f))
-    # this was given in the assignment and computed in class
-    k = (int)((np.log(tol/(b-a)))/(np.log(.5)) + 1)
-
-    # note that we don't have to consider error here because it's taken into account in k
-    print("Results from bisection method:")
-    print("{:<25} {:<25}".format('Iterations', 'Approx. Root Location'))
-
-    for iterations in range(1, k):
-        c = .5 * (a + b)
-        print("{:<25} {:<25}".format(iterations, "{:.10f}".format(c)))
-        x0 = c
-        if c == 0:
-            print("Final Approximation: " + str(c))
-            break
-        fc = float(eval(f))
-        if fa * fc < 0:
-            b = c
-            fb = fc
-        else:
-            a = c
-            fa = fc
-
-    print("Final Approximation: " + str(c))
-
-def newtons_method():
-    pass
-
-def secant_method():
-    pass
-```
