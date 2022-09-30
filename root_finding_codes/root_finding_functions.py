@@ -28,6 +28,7 @@ def fixed_point(f, initialx, tol, maxiter):
     # Starting the while loop. If the error is greater than the tolerance and if the iterations
     # is greater than the maximum number of iterations, then the loop will continue.
     while (error > tol and iterations < maxiter):
+        x = x0
         x1 = g1(float(eval(f)), x0) # setting x1 value using g1 iteration function, used for Task 1
         # x1 = g(float(eval(f)), x0) # used for Task 3
         error = np.abs(x1 - x0) # computing the absolute value of the error
@@ -49,6 +50,7 @@ def fixed_point(f, initialx, tol, maxiter):
     print("Results from g2 iteration method:")
     print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
     while (error > tol and iterations < maxiter):
+        x = x0
         x1 = g2(float(eval(f)), x0) # setting x1 value using g1 iteration function, used for Task 1
         # x1 = g(float(eval(f)), x0)  # used for Task 3
         error = np.abs(x1 - x0)

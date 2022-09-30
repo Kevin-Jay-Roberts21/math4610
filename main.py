@@ -15,13 +15,13 @@ from root_finding_codes.root_finding_functions import *
 # it's not defined. x0 is defined so we use it.
 
 # Task 1 and 2
-#fixed_point("x0*np.exp(-x0)", 1.1, 0.0000001, 20)
+#fixed_point("x*np.exp(-x)", 1.1, 0.0000001, 20)
 
 # Task 3
 # Must uncomment out the Task 3 g lines in the fixed_point function (line 32 and 53) AND
 # comment out the g1() and g2() function calls in the fixed_point function (line 31 and 52)
 # before uncommenting the following line:
-#fixed_point("10.14 * np.exp(x0*x0) * np.cos(np.pi / x0)", 2.1, 0.0001, 1000)
+#fixed_point("10.14 * np.exp(x*x) * np.cos(np.pi / x)", 2.1, 0.0001, 1000)
 
 # Task 4
 #bisection("x*np.exp(-x)", -5, 1, 0.0001)
