@@ -190,11 +190,9 @@ def bisection_newton_hybrid(f, fprime, a, b, tol, maxiter):
 
     print("Final Approximation: " + str(x1))
 
-def bisection_secant_hybrid(f, a, b, tol, maxiter):
+def bisection_secant_hybrid(f, x0, x1, tol, maxiter):
     error = 10.0 * tol
     iter = 0
-    x0 = 0.5 * (a + b)
-    x1 = b
     x = x0
     f0 = float(eval(f))
     x = x1
@@ -209,6 +207,8 @@ def bisection_secant_hybrid(f, a, b, tol, maxiter):
         x2 = x1 - (f1 * (x1 - x0)/(f1 - f0))
         secanterror = abs(x2 - x1)
         if secanterror > error:
+            a = x1
+            b = x2
             x = a
             fa = float(eval(f))
             x = b
@@ -219,6 +219,9 @@ def bisection_secant_hybrid(f, a, b, tol, maxiter):
             print("{:<25} {:<25}".format('Iterations', 'Approx. Root Location'))
             for i in range(1, 4):
                 c = 0.5 * (a + b)
+                if c == 0:
+                    print("Final Approximation: " + str(c))
+                    return
                 x = c
                 fc = float(eval(f))
                 print("{:<25} {:<25}".format(i + iter, "{:.10f}".format(c)))
@@ -229,18 +232,23 @@ def bisection_secant_hybrid(f, a, b, tol, maxiter):
                     a = c
                     fa = fc
             error = abs(b - a)
-            x0 = c
+            x0 = a
+            x1 = b
             iter += 4
+            f0 = f1
+            x = x1
+            f1 = float(eval(f))
+            iter += 1
             print("Exiting the bisection method:")
         else:
+            iter += 1
             x0 = x1
+            x1 = x2
+            f0 = f1
+            x = x1
+            f1 = float(eval(f))
             error = secanterror
         print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
-        iter += 1
-        #x0 = x1
-        x1 = x2
-        f0 = f1
-        x = x1
-        f1 = float(eval(f))
+
 
     print("Final Approximation: " + str(x1))

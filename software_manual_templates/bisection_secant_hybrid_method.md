@@ -23,17 +23,23 @@ The function will be called with inputs (specified above) like the following:
 
 Output from the lines above:
 
+      Results from Bisection-Secant Hybrid Method:
+      Iterations                Approx. Root Location     Error                    
+      The Secant Error is greater than the general error!
+      Switching to Bisection method:
+    
       Iterations                Approx. Root Location    
       1                         2.0000000000             
-      2                         4.5000000000             
-      3                         5.7500000000             
+      2                         -0.5000000000            
+      3                         -1.7500000000            
       Exiting the bisection method:
-      4                         7.0000000000              1.2500000000             
-      5                         2.0000000000              0.0000000000             
-      Final Approximation: 2.000000000000001
+      5                         -1.7500000000             1.2500000000             
+      6                         -1.7500000000             0.0000000000             
+      Final Approximation: -1.7499999999999984
 
-The code output suggests that our final approximation is 2. Due to the inputs, we notice that right away we switched to 
-using the bisection method and then switched back to the secant method.
+The code output suggests that our final approximation is -1.749. Due to the inputs, we notice that right away we switched to 
+using the bisection method and then switched back to the secant method. Further, notice our final approximation is acutally 
+not even a root. This is due to our poorly estimated x0 and x1. See the Special Note for more information.
 
 The first 8 lines of the function are for initializing variables and functions. Then we see the 2 print statements to notify
 the user that the function is about to start up the while loop. The line ``while (error > tol and iter < maxiter):`` implies that we want to run the loop as long as the error is 
@@ -48,16 +54,14 @@ the final approximation.
 
 **Implementation/Code:** The following is the code for bisection_secant_method()
 
-    def bisection_secant_hybrid(f, a, b, tol, maxiter):
+    def bisection_secant_hybrid(f, x0, x1, tol, maxiter):
         error = 10.0 * tol
         iter = 0
-        x0 = 0.5 * (a + b)
-        x1 = b
         x = x0
         f0 = float(eval(f))
         x = x1
         f1 = float(eval(f))
-        
+    
         print("Results from Bisection-Secant Hybrid Method:")
         print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
         while (error > tol and iter < maxiter):
@@ -67,6 +71,8 @@ the final approximation.
             x2 = x1 - (f1 * (x1 - x0)/(f1 - f0))
             secanterror = abs(x2 - x1)
             if secanterror > error:
+                a = x1
+                b = x2
                 x = a
                 fa = float(eval(f))
                 x = b
@@ -77,6 +83,9 @@ the final approximation.
                 print("{:<25} {:<25}".format('Iterations', 'Approx. Root Location'))
                 for i in range(1, 4):
                     c = 0.5 * (a + b)
+                    if c == 0:
+                        print("Final Approximation: " + str(c))
+                        return
                     x = c
                     fc = float(eval(f))
                     print("{:<25} {:<25}".format(i + iter, "{:.10f}".format(c)))
@@ -87,19 +96,24 @@ the final approximation.
                         a = c
                         fa = fc
                 error = abs(b - a)
-                x0 = c
+                x0 = a
+                x1 = b
                 iter += 4
+                f0 = f1
+                x = x1
+                f1 = float(eval(f))
+                iter += 1
                 print("Exiting the bisection method:")
             else:
+                iter += 1
                 x0 = x1
+                x1 = x2
+                f0 = f1
+                x = x1
+                f1 = float(eval(f))
                 error = secanterror
             print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
-            iter += 1
-            #x0 = x1
-            x1 = x2
-            f0 = f1
-            x = x1
-            f1 = float(eval(f))
+    
     
         print("Final Approximation: " + str(x1))
 
