@@ -166,7 +166,7 @@ def bisection_newton_hybrid(f, fprime, a, b, tol, maxiter):
             print("Switching to Bisection method:")
             print()
             print("{:<25} {:<25}".format('Iterations', 'Approx. Root Location'))
-            for i in range(1, 4):
+            for i in range(1, 5):
                 c = 0.5 * (a + b)
                 x = c
                 fc = float(eval(f))
@@ -219,7 +219,7 @@ def bisection_secant_hybrid(f, x0, x1, tol, maxiter):
             print("Switching to Bisection method:")
             print()
             print("{:<25} {:<25}".format('Iterations', 'Approx. Root Location'))
-            for i in range(1, 4):
+            for i in range(1, 5):
                 c = 0.5 * (a + b)
                 if c == 0:
                     print("Final Approximation: " + str(c))
