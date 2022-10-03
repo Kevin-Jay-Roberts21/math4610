@@ -17,14 +17,10 @@ I added the rest of the methods and ran the line in the terminal to link and loa
 
 I've created the shared library, and the code can be found, again, [here](https://github.com/Kevin-Jay-Roberts21/math4610/tree/master/c_code).
 
-Here is a picture of the process:
-
-![alt text](homework3_images/task4_image.png)
+Here is a picture of the process: [click here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework3_images/task4_image.png)
 
 ## Task 5 
 
 I've recompiled the code, and the testRootFinding.a file can be found in my temp folder [here](https://github.com/Kevin-Jay-Roberts21/math4610/tree/master/c_code/temp)
 
-Here is a picture of running the testRootFinding executable:
-
-![alt text](homework3_images/task5_image.png)
+Here is a picture of running the testRootFinding executable: [click here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework3_images/task5_image.png)
