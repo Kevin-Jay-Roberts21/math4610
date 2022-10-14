@@ -1,4 +1,5 @@
 from root_finding_codes.root_finding_functions import *
+from approximating_functions.second_derivative_approx import *
 
 ####################
 #### HOMEWORK 1 ####
@@ -47,3 +48,21 @@ from root_finding_codes.root_finding_functions import *
 # Task 5
 # passing in f, a, b, tol, maxiter
 #bisection_secant_hybrid("10.14 * np.exp(x*x) * np.cos(np.pi / x)", -3, 7, 0.00001, 20)
+
+
+####################
+#### HOMEWORK 4 ####
+####################
+
+# Task 2
+# second_derivative_approx("((x - np.pi/2) * np.tan(x))/(x*x + 65)", np.pi/4, 0.001)
+
+# Task 3
+x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+y = []
+for i in range(0, len(x)):
+    y.append(second_derivative_approx("((x - np.pi/2) * np.tan(x))/(x*x + 65)", x[i], 0.001))
+
+fit_data_sets(x, y)
+
+# Task 5
