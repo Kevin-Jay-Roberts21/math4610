@@ -56,7 +56,7 @@ from approximating_functions.error_computations import *
 ####################
 
 # Task 2
-# second_derivative_approx("((x - np.pi/2) * np.tan(x))/(x*x + 65)", np.pi/4, 0.001)
+second_derivative_approx("((x - np.pi/2) * np.tan(x))/(x*x + 65)", np.pi/4, 0.001)
 
 # Task 3
 # x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
