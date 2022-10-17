@@ -44,8 +44,8 @@ Input:
       explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 8, 100)
 
 Output:
-      Final Approximation: 0.00045465986240039724
 
+      Final Approximation: 0.00045465986240039724
       Final Approximation: 0.2940624089205812
 
 Graph for a = 0.01: [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig2.png)
