@@ -45,9 +45,11 @@ Input:
 
 Output:
       Final Approximation: 0.00045465986240039724
+
       Final Approximation: 0.2940624089205812
 
 Graph for a = 0.01: [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig2.png)
+
 Graph for a = 2.0: [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig3.png)
 
 The code is at the bottom of this software manual. Let's go through it now in depth:
