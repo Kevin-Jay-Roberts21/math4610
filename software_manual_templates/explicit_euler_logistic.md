@@ -27,7 +27,7 @@ The function will be called with inputs (specified above) like the following:
 Output from the lines above give a final approximation at T and a graph of the function:
 
       Final Approximation: 0.13607479095833241
-      [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig1.png)
+Graph for a = 0.2: [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig1.png)
 
 I've computed the same for different alpha and beta values as well:
 
@@ -44,9 +44,9 @@ Input:
 
 Output:
       Final Approximation: 0.00045465986240039724
-      [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig2.png)
       Final Approximation: 0.2940624089205812
-      [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig3.png)
+Graph for a = 0.01: [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig2.png)
+Graph for a = 2.0: [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig3.png)
 
 The code is at the bottom of this software manual. Let's go through it now in depth:
 
