@@ -25,12 +25,14 @@ See function call in the main function [here](https://github.com/Kevin-Jay-Rober
 I created the code for this task [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
 
 I skipped on creating a software manual for this code because the code is very very simple. We simply take an exact solution
-and an approximation and find the absoluate error and the relative error. Both of which can be achieved in one line of code. 
+and an approximation and find the absolute error and the relative error. Both of which can be achieved in one line of code. 
 
 To finish, I created a shared library. The c_code can be found HERE
 
 ## Task 5 
 
-I've recompiled the code, and the testRootFinding.a file can be found in my temp folder [here](https://github.com/Kevin-Jay-Roberts21/math4610/tree/master/c_code/temp)
+See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/fit_data_sets.md)
 
-Here is a picture of running the testRootFinding executable: [click here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework3_images/task5_image.png)
+See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
+
+See function call in the main function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
