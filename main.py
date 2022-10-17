@@ -72,16 +72,16 @@ relative_error(100, 99.99)
 
 
 # Task 5
-a = 0.2
-b = 0.0005
-P0 = 10.0
-explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 50, 100)
-a = 0.01
-b = 0.0005
-P0 = 10.0
-explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 600, 100)
-a = 2.0
-b = 0.0005
-P0 = 10.0
-explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 8, 100)
+# a = 0.2
+# b = 0.0005
+# P0 = 10.0
+# explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 50, 100)
+# a = 0.01
+# b = 0.0005
+# P0 = 10.0
+# explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 600, 100)
+# a = 2.0
+# b = 0.0005
+# P0 = 10.0
+# explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 8, 100)
 

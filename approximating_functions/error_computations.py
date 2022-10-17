@@ -1,12 +1,9 @@
 def absolute_error(u, v):
     error = abs(u - v)
-    print(error)
+    print("Absolute Error: " + str(error))
     return error
 
 def relative_error(u, v):
     error = abs(u - v)/abs(u)
-    print(error)
+    print("Relative Error: " + str(error))
     return error
-
-def absolute_digit_accuracy():
-    pass
