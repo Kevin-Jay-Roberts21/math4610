@@ -31,7 +31,7 @@ To finish, I created a shared library. The c_code can be found HERE
 
 ## Task 5 
 
-See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/fit_data_sets.md)
+See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/explicit_euler_logistic.md)
 
 See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
 
