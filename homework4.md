@@ -14,7 +14,7 @@ See function call in the main function [here](https://github.com/Kevin-Jay-Rober
 
 ## Task 3 
 
-See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/second_derivative_approx.md)
+See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/fit_data_sets.md)
 
 See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
 
@@ -22,9 +22,12 @@ See function call in the main function [here](https://github.com/Kevin-Jay-Rober
 
 ## Task 4 
 
-I've created the shared library, and the code can be found, again, [here](https://github.com/Kevin-Jay-Roberts21/math4610/tree/master/c_code).
+I created the code for this task [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
 
-Here is a picture of the process: [click here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework3_images/task4_image.png)
+I skipped on creating a software manual for this code because the code is very very simple. We simply take an exact solution
+and an approximation and find the absoluate error and the relative error. Both of which can be achieved in one line of code. 
+
+To finish, I created a shared library. The c_code can be found HERE
 
 ## Task 5 
 
