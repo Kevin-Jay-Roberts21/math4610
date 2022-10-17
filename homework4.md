@@ -6,15 +6,19 @@ I proved that the approximation is of order h squared. My work can be found [her
 
 ## Task 2 
 
-See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/bisection_newton_hybrid_method.md)
+See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/second_derivative_approx.md)
 
-See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/root_finding_codes/root_finding_functions.py)
+See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
 
 See function call in the main function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
 
 ## Task 3 
 
-I added the rest of the methods and ran the line in the terminal to link and load the codes: ``gcc -o testRootFinding testRootFinding.c *.o`` 
+See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/second_derivative_approx.md)
+
+See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
+
+See function call in the main function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
 
 ## Task 4 
 
