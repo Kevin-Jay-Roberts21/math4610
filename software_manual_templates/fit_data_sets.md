@@ -1,4 +1,4 @@
-# Math 4610 Root Finding Problem: Secant Method
+# Math 4610 Fitting Data Sets
 
 **Routine Name:**           fit_data_sets
 

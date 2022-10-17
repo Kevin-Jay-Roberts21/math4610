@@ -51,16 +51,27 @@ def fit_data_sets(x, y):
 def explicit_euler_logistic(a, b, P0, t0, f, T, n):
 
     # intialize variables
-    h = (T - t0)/n
+    tvals = []
+    xvals = []
 
+    h = (T - t0)/n
     P = P0
+
+    tvals.append(t0)
+    xvals.append(P0)
+
     f0 = float(eval(f))
     for i in range(1, n):
         t1 = t0 + h
         P1 = P0 + (h * f0)
+        tvals.append(t1)
+        xvals.append(P0)
         t0 = t1
         P0 = P1
         P = P0
         f0 = float(eval(f))
+
+    plt.plot(tvals, xvals)
+    plt.show()
 
     print("Final Approximation: " + str(f0))

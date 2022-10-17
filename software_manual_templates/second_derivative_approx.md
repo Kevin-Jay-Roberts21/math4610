@@ -1,4 +1,4 @@
-# Math 4610 Root Finding Problem: Secant Method
+# Math 4610 Second Derivative Approximations
 
 **Routine Name:**           second_derivative_approx
 

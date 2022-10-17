@@ -59,12 +59,12 @@ from approximating_functions.error_computations import *
 #second_derivative_approx("((x - np.pi/2) * np.tan(x))/(x*x + 65)", np.pi/4, 0.001)
 
 # Task 3
-x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-y = []
-for i in range(0, len(x)):
-    y.append(second_derivative_approx("((x - np.pi/2) * np.tan(x))/(x*x + 65)", x[i], 0.001))
-
-fit_data_sets(x, y)
+# x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# y = []
+# for i in range(0, len(x)):
+#     y.append(second_derivative_approx("((x - np.pi/2) * np.tan(x))/(x*x + 65)", x[i], 0.001))
+#
+# fit_data_sets(x, y)
 
 # Task 4
 absolute_error(100, 99.99)
@@ -75,13 +75,13 @@ relative_error(100, 99.99)
 a = 0.2
 b = 0.0005
 P0 = 10.0
-explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 10, 10)
+explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 50, 100)
 a = 0.01
 b = 0.0005
 P0 = 10.0
-explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 10, 10)
+explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 600, 100)
 a = 2.0
 b = 0.0005
 P0 = 10.0
-explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 10, 10)
+explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 8, 100)
 
