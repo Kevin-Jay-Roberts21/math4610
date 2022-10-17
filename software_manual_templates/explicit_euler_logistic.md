@@ -1,4 +1,4 @@
-# Math 4610 Root Finding Problem: Secant Method
+# Math 4610 Explicit Euler Approximation for the Logistic Equation
 
 **Routine Name:**           explicit_euler_logistic
 
