@@ -48,17 +48,19 @@ def fit_data_sets(x, y):
     print("a: " + str(a))
     print("b: " + str(b))
 
-def explicit_euler(initial_t0, initial_x0, f, T, n):
+def explicit_euler_logistic(a, b, P0, t0, f, T, n):
 
     # intialize variables
-    h = (T - initial_t0)/n
-    t0 = initial_t0
-    x0 = initial_x0
+    h = (T - t0)/n
+
+    P = P0
     f0 = float(eval(f))
     for i in range(1, n):
         t1 = t0 + h
-        x1 = x0 + (h * f0)
+        P1 = P0 + (h * f0)
         t0 = t1
-        x0 = x1
+        P0 = P1
+        P = P0
         f0 = float(eval(f))
 
+    print("Final Approximation: " + str(f0))
