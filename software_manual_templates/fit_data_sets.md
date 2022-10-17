@@ -42,7 +42,7 @@ to solve for a and b. Thus, we multiply A by it's transpose. This gets us a squa
 A to the dataset y, giving us our b1 and b2 values. We now have something of the sort: Ax = b. By taking the inverse of A 
 and multiplying it to both sides of the equation, we solve for b and a. Finally, we print these values.
 
-**Implementation/Code:** The following is the code for second_derivative_approx()
+**Implementation/Code:** The following is the code for fit_data_sets()
 
     def fit_data_sets(x, y):
         n = len(x) # here n = 10

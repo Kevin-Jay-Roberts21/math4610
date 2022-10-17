@@ -27,54 +27,65 @@ The function will be called with inputs (specified above) like the following:
 Output from the lines above give a final approximation at T and a graph of the function:
 
       Final Approximation: 0.13607479095833241
-      [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
+      [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig1.png)
 
 I've computed the same for different alpha and beta values as well:
 
 Input:
 
+      a = 0.01
+      b = 0.0005
+      P0 = 10.0
+      explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 600, 100)
+      a = 2.0
+      b = 0.0005
+      P0 = 10.0
+      explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 8, 100)
+
 Output:
       Final Approximation: 0.00045465986240039724
-      [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
+      [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig2.png)
       Final Approximation: 0.2940624089205812
-      [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
+      [graph](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/homework4_images/fig3.png)
 
+The code is at the bottom of this software manual. Let's go through it now in depth:
 
-The first 4 lines of the code are for initializing variables. We want to define ``f0``, ``f1``, ``error``, and ``tol``.
-The next few lines are the informative print statements and then we being the while loop. The line ``while (error > tol and iter < maxiter):`` implies that we want to run the loop as long as the error is
-greater than the tolerance AND as long as the number of iterations is less than the number of the inputted maximum number
-of iterations. Then we define an ``x2`` using the secant method. This is going to be root approximation. Our error will
-be the absolute value of ``x2`` minus ``x1``. Then we print our approximation. Finally, we need to reinitialize the variables
-and run the loop again until one of the loops conditions is met.
+First and foremost, we must initialize variables. We initialize a tvals array and an xvals array so that we can create a
+plot. These array store the logistic approximation at a certain time t0. We then initalize h, and P0, and add them into
+the arrays. We then approximate an initial value for the logistic equation, f0. Finally, we start the for loop which will
+run through n iterations. In the loop we compute the next time step, and then the next corresponding P0 value. Then add
+them into the arrays. Then we redefine the time step t0 and the P0 value. Finally, we redefine the approximated logistic
+function f0. After the loops ends, we create a plot fo the tvals and teh xvals and show this plot. Thus, this function returns
+a final value at T, and a graph of all the values.
 
-**Implementation/Code:** The following is the code for newtons_method()
+**Implementation/Code:** The following is the code for explicit_euler_logistic()
 
-    def secant_method(f, x0, x1, tol, maxiter):
-        x = x0
+    def explicit_euler_logistic(a, b, P0, t0, f, T, n):
+
+        # intialize variables
+        tvals = []
+        xvals = []
+
+        h = (T - t0)/n
+        P = P0
+
+        tvals.append(t0)
+        xvals.append(P0)
+
         f0 = float(eval(f))
-        x = x1
-        f1 = float(eval(f))
-        error = 10.0 * tol
-        iter = 0
+        for i in range(1, n):
+            t1 = t0 + h
+            P1 = P0 + (h * f0)
+            tvals.append(t1)
+            xvals.append(P0)
+            t0 = t1
+            P0 = P1
+            P = P0
+            f0 = float(eval(f))
 
-        print("Results from Secant Method:")
-        print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
+        plt.plot(tvals, xvals)
+        plt.show()
 
-        while (error > tol and iter < maxiter):
-            x2 = x1 - (f1 * (x1 - x0)/(f1 - f0))
-            error = abs(x2 - x1)
-            print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
-            iter += 1
-            x0 = x1
-            x1 = x2
-            f0 = f1
-            x = x1
-            f1 = float(eval(f))
+        print("Final Approximation: " + str(f0))
 
-        print("Final Approximation: " + str(x1))
-
-**Special Note:** This method is dependent on proper initial root approximations as well as inputted functions. Without
-knowledge of the behavior of the function, a poor initial root approximation may result in confusing and/or unhelpful final
-root approximations.
-
-**Last Modified:** September/2022
+**Last Modified:** October/2022
