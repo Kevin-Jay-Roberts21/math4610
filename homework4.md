@@ -29,7 +29,9 @@ The usages can be found in the main.py file [here](https://github.com/Kevin-Jay-
 I skipped on creating a software manual for the absolute error and relative error code because the code is very very simple. 
 We simply take an exact solution and an approximation and find the absolute error and the relative error. Both of which 
 can be achieved in one line of code:
+
 Absolute error: ``error = abs(u - v)``
+
 Relative error: ``error = abs(u - v)/abs(u)``
 
 The software manual code for the single precision can be found [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py) (written in c code).
