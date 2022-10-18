@@ -10,7 +10,7 @@ See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/
 
 See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
 
-See function call in the main function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
+See function call in the main.py function under Homework 4 [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
 
 ## Task 3 
 
@@ -18,13 +18,13 @@ See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/
 
 See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
 
-See function call in the main function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
+See function call in the main.py file under Homework 4 [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
 
 ## Task 4 
 
 I created the python code for absolute error and relative error for this task [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/error_computations.py).
 
-The usages can be found in the main.py file [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py).
+The usages can be found in the main.py file under Homework 4 [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py).
 
 I skipped on creating a software manual for the absolute error and relative error code because the code is very very simple. 
 We simply take an exact solution and an approximation and find the absolute error and the relative error. Both of which 
@@ -46,4 +46,4 @@ See Software Manual [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/
 
 See code function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py)
 
-See function call in the main function [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
+See function call in the main.py function under Homework 4 [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
