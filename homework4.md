@@ -22,7 +22,7 @@ See function call in the main function [here](https://github.com/Kevin-Jay-Rober
 
 ## Task 4 
 
-I created the code for this task [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py).
+I created the python code for absolute error and relative error for this task [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/error_computations.py).
 
 The usages can be found in the main.py file [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py).
 
@@ -34,11 +34,11 @@ Absolute error: ``error = abs(u - v)``
 
 Relative error: ``error = abs(u - v)/abs(u)``
 
-The software manual code for the single precision can be found [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py) (written in c code).
+The software manual code for the single precision can be found [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/single_precision_digit_count.md) (written in c code).
 
-The software manual code for the double precision can be found [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py) (written in c code).
+The software manual code for the double precision can be found [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/software_manual_templates/double_precision_digit_count.md) (written in c code).
 
-To finish, I created a shared library. The c codes can be found [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/approximating_functions/second_derivative_approx.py).
+To finish, I created a shared library. The c codes can be found [here](https://github.com/Kevin-Jay-Roberts21/math4610/tree/master/c_code/homework_4_c_code).
 
 ## Task 5 
 

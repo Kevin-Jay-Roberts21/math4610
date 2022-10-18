@@ -67,8 +67,8 @@ from approximating_functions.error_computations import *
 # fit_data_sets(x, y)
 
 # Task 4
-absolute_error(100, 99.99)
-relative_error(100, 99.99)
+# absolute_error(100, 99.99)
+# relative_error(100, 99.99)
 
 
 # Task 5
