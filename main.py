@@ -84,3 +84,30 @@ from approximating_functions.error_computations import *
 # P0 = 10.0
 # explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 8, 100)
 
+
+####################
+#### HOMEWORK 5 ####
+####################
+
+# Task 1
+# a = 0.2
+# b = 0.0005
+# P0 = 10.0
+# implicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 50, 100)
+# a = 0.01
+# b = 0.0005
+# P0 = 10.0
+# implicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 600, 100)
+# a = 2.0
+# b = 0.0005
+# P0 = 10.0
+# implicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 8, 100)
+
+# Task 2
+# testing some time values for the exact logistic equation
+a = 0.2
+b = 0.0005
+P0 = 10.0
+exact_logistic("(a*(P0/(a - P0*b))*np.exp(t*a))/(1 + b*(P0/(a - P0*b))*np.exp(t*a))", P0, a, b, 2)
+exact_logistic("(a*(P0/(a - P0*b))*np.exp(t*a))/(1 + b*(P0/(a - P0*b))*np.exp(t*a))", P0, a, b, 5)
+exact_logistic("(a*(P0/(a - P0*b))*np.exp(t*a))/(1 + b*(P0/(a - P0*b))*np.exp(t*a))", P0, a, b, 10)
