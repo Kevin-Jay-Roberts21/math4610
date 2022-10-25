@@ -112,3 +112,18 @@ def exact_logistic(P, P_initial, alpha, beta, time):
     P_final = float(eval(P))
     print("Exact Solution to Logistic Equation: " + str(P_final))
     return P_final
+
+def trapezoidal_rule(f, a, b, n, p):
+    dx = (b - a)/n
+    x = b
+    fxn = float(eval(f))
+    x = a
+    fx0 = float(eval(f))
+    sum = 0.5 * (fx0 + fxn)
+    for i in range(1, n-2):
+
+        fxi = p[i]
+        sum = sum + fxi
+    sum = sum * dx
+    print("The final approximation is: " + str(sum) + "for n = " + str(n))
+    return sum
