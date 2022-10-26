@@ -113,55 +113,45 @@ from approximating_functions.error_computations import *
 # exact_logistic("(a*(P0/(a - P0*b))*np.exp(t*a))/(1 + b*(P0/(a - P0*b))*np.exp(t*a))", P0, a, b, 10)
 
 # Task 4
-# # for n = 2
-# partitions = [0, np.pi/4]
-# a = partitions[0]
-# b = partitions[1]
-# trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
-# # for n = 4
-# partitions = [0, np.pi/12, 2*np.pi/12, 3*np.pi/12]
-# a = partitions[0]
-# b = partitions[3]
-# trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
-# # for n = 8
-# partitions = [0, np.pi/28, 2*np.pi/28, 3*np.pi/28, 4*np.pi/28, 5*np.pi/28, 6*np.pi/28,  7*np.pi/28]
-# a = partitions[0]
-# b = partitions[7]
-# trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
-# # for n = 16
-# partitions = [0, np.pi/60, 2*np.pi/60, 3*np.pi/60, 4*np.pi/60, 5*np.pi/60, 6*np.pi/60, 7*np.pi/60, 8*np.pi/60, 9*np.pi/60, 10*np.pi/60, 11*np.pi/60, 12*np.pi/60, 13*np.pi/60, 14*np.pi/60, 15*np.pi/60]
-# a = partitions[0]
-# b = partitions[15]
-# trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
-# # for n = 32
-# partitions = [0, 1*np.pi/124, 2*np.pi/124, 3*np.pi/124, 4*np.pi/124, 5*np.pi/124, 6*np.pi/124, 7*np.pi/124, 8*np.pi/124, 9*np.pi/124, 10*np.pi/124, 11*np.pi/124, 12*np.pi/124, 13*np.pi/124, 14*np.pi/124, 15*np.pi/124, 16*np.pi/124, 17*np.pi/124, 18*np.pi/124, 19*np.pi/124, 20*np.pi/124, 21*np.pi/124, 22*np.pi/124, 23*np.pi/124, 24*np.pi/124, 25*np.pi/124, 26*np.pi/124, 27*np.pi/124, 28*np.pi/124, 29*np.pi/124, 30*np.pi/124, 31*np.pi/124]
-# a = partitions[0]
-# b = partitions[31]
-# trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
+# for n = 2
+a = 0
+b = np.pi/4
+trapezoidal_rule("np.exp(-x*x)", a, b, 2)
+# for n = 4
+a = 0
+b = np.pi/4
+trapezoidal_rule("np.exp(-x*x)", a, b, 4)
+# for n = 8
+a = 0
+b = np.pi/4
+trapezoidal_rule("np.exp(-x*x)", a, b, 8)
+# for n = 16
+a = 0
+b = np.pi/4
+trapezoidal_rule("np.exp(-x*x)", a, b, 16)
+# for n = 32
+a = 0
+b = np.pi/4
+trapezoidal_rule("np.exp(-x*x)", a, b, 32)
 
 # Task 5
 # for n = 2
-partitions = [0, np.pi/4]
-a = partitions[0]
-b = partitions[1]
-simpsons_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
+a = 0
+b = np.pi/4
+simpsons_rule("np.exp(-x*x)", a, b, 2)
 # for n = 4
-partitions = [0, np.pi/12, 2*np.pi/12, 3*np.pi/12]
-a = partitions[0]
-b = partitions[3]
-simpsons_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
+a = 0
+b = np.pi/4
+simpsons_rule("np.exp(-x*x)", a, b, 4)
 # for n = 8
-partitions = [0, np.pi/28, 2*np.pi/28, 3*np.pi/28, 4*np.pi/28, 5*np.pi/28, 6*np.pi/28,  7*np.pi/28]
-a = partitions[0]
-b = partitions[7]
-simpsons_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
+a = 0
+b = np.pi/4
+simpsons_rule("np.exp(-x*x)", a, b, 8)
 # for n = 16
-partitions = [0, np.pi/60, 2*np.pi/60, 3*np.pi/60, 4*np.pi/60, 5*np.pi/60, 6*np.pi/60, 7*np.pi/60, 8*np.pi/60, 9*np.pi/60, 10*np.pi/60, 11*np.pi/60, 12*np.pi/60, 13*np.pi/60, 14*np.pi/60, 15*np.pi/60]
-a = partitions[0]
-b = partitions[15]
-simpsons_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
-# for n = 16
-partitions = [0, 1*np.pi/124, 2*np.pi/124, 3*np.pi/124, 4*np.pi/124, 5*np.pi/124, 6*np.pi/124, 7*np.pi/124, 8*np.pi/124, 9*np.pi/124, 10*np.pi/124, 11*np.pi/124, 12*np.pi/124, 13*np.pi/124, 14*np.pi/124, 15*np.pi/124, 16*np.pi/124, 17*np.pi/124, 18*np.pi/124, 19*np.pi/124, 20*np.pi/124, 21*np.pi/124, 22*np.pi/124, 23*np.pi/124, 24*np.pi/124, 25*np.pi/124, 26*np.pi/124, 27*np.pi/124, 28*np.pi/124, 29*np.pi/124, 30*np.pi/124, 31*np.pi/124]
-a = partitions[0]
-b = partitions[31]
-simpsons_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
+a = 0
+b = np.pi/4
+simpsons_rule("np.exp(-x*x)", a, b, 16)
+# for n = 32
+a = 0
+b = np.pi/4
+simpsons_rule("np.exp(-x*x)", a, b, 32)

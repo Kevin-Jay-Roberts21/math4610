@@ -50,7 +50,7 @@ def fit_data_sets(x, y):
 
 def explicit_euler_logistic(a, b, P0, t0, f, T, n):
 
-    # intialize variables
+    # initialize variables
     tvals = []
     xvals = []
 
@@ -78,7 +78,7 @@ def explicit_euler_logistic(a, b, P0, t0, f, T, n):
 
 def implicit_euler_logistic(a, b, P0, t0, f, T, n):
 
-    # intialize variables
+    # initialize variables
     tvals = []
     xvals = []
 
@@ -113,36 +113,42 @@ def exact_logistic(P, P_initial, alpha, beta, time):
     print("Exact Solution to Logistic Equation: " + str(P_final))
     return P_final
 
-def trapezoidal_rule(f, a, b, n, p):
+def trapezoidal_rule(f, a, b, n):
     dx = (b - a)/n
     x = b
     fxn = float(eval(f))
     x = a
     fx0 = float(eval(f))
     sum = 0.5 * (fx0 + fxn)
-    for i in range(1, n-2):
-
-        fxi = p[i]
-        sum = sum + fxi
+    xk = 0
+    for k in range(1, n):
+        xk = xk + (b - a) / n
+        x = xk
+        fxk = float(eval(f))
+        sum = sum + fxk
     sum = sum * dx
     print("The final approximation is: " + str(sum) + "for n = " + str(n))
     return sum
 
-def simpsons_rule(f, a, b, n, p):
+def simpsons_rule(f, a, b, n):
     dx = (a + b)/n
     x = b
     fxn = float(eval(f))
     x = a
     fx0 = float(eval(f))
     sum = fx0 + fxn
-    for i in range(0, n-1):
-        x = (p[i] + p[i+1]/2)
-        fval = float(eval(f))
-        sum = sum + (4.0 * fval)
-    for i in range(0, n-1):
-        x = p[i+1]
-        fxi_1 = float(eval(f))
-        sum = sum + fxi_1
-    sum = (sum * dx)/6.0
+    xk = 0
+    for k in range(1, n-2, 2):
+        xk = xk + (b-a)/n
+        x = xk
+        fxk = float(eval(f))
+        sum = sum + (4.0 * fxk)
+    xk = 0
+    for i in range(2, n-2, 2):
+        xk = xk + (b - a)/n
+        x = xk
+        fxk = float(eval(f))
+        sum = sum + (2.0 * fxk)
+    sum = (sum * dx)/3.0
     print("The final approximation is: " + str(sum) + "for n = " + str(n))
     return sum
