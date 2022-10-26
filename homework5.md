@@ -70,12 +70,12 @@ a = partitions[0]
 b = partitions[7]
 trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
 # for n = 16
-partitions = [0, np.pi/64, 2*np.pi/64, 3*np.pi/64, 4*np.pi/64, 5*np.pi/64, 6*np.pi/64, 7*np.pi/64, 8*np.pi/64, 9*np.pi/64, 10*np.pi/64, 11*np.pi/64, 12*np.pi/64, 13*np.pi/64, 14*np.pi/64, 15*np.pi/64, 16*np.pi/64]
+partitions = [0, np.pi/60, 2*np.pi/60, 3*np.pi/60, 4*np.pi/60, 5*np.pi/60, 6*np.pi/60, 7*np.pi/60, 8*np.pi/60, 9*np.pi/60, 10*np.pi/60, 11*np.pi/60, 12*np.pi/60, 13*np.pi/60, 14*np.pi/60, 15*np.pi/60]
 a = partitions[0]
 b = partitions[15]
 trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
-# for n = 16
-partitions = [0, 1*np.pi/128, 2*np.pi/128, 3*np.pi/128, 4*np.pi/128, 5*np.pi/128, 6*np.pi/128, 7*np.pi/128, 8*np.pi/128, 9*np.pi/128, 10*np.pi/128, 11*np.pi/128, 12*np.pi/128, 13*np.pi/128, 14*np.pi/128, 15*np.pi/128, 16*np.pi/128, 17*np.pi/128, 18*np.pi/128, 19*np.pi/128, 20*np.pi/128, 21*np.pi/128, 22*np.pi/128, 23*np.pi/128, 24*np.pi/128, 25*np.pi/128, 26*np.pi/128, 27*np.pi/128, 28*np.pi/128, 29*np.pi/128, 30*np.pi/128, 31*np.pi/128, 32*np.pi/128]
+# for n = 32
+partitions = [0, 1*np.pi/124, 2*np.pi/124, 3*np.pi/124, 4*np.pi/124, 5*np.pi/124, 6*np.pi/124, 7*np.pi/124, 8*np.pi/124, 9*np.pi/124, 10*np.pi/124, 11*np.pi/124, 12*np.pi/124, 13*np.pi/124, 14*np.pi/124, 15*np.pi/124, 16*np.pi/124, 17*np.pi/124, 18*np.pi/124, 19*np.pi/124, 20*np.pi/124, 21*np.pi/124, 22*np.pi/124, 23*np.pi/124, 24*np.pi/124, 25*np.pi/124, 26*np.pi/124, 27*np.pi/124, 28*np.pi/124, 29*np.pi/124, 30*np.pi/124, 31*np.pi/124]
 a = partitions[0]
 b = partitions[31]
 trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
@@ -85,11 +85,11 @@ Notice that the defined trapezoidal_rule() function takes a function f, end poin
 and the partitions list. The following output I got is: 
 
 ```
-The final approximation is: 0.30230789881265957 for n = 2
-The final approximation is: 0.20255813899533687 for n = 4
-The final approximation is: 0.24080472695354477 for n = 8
-The final approximation is: 0.25748886476573046 for n = 16
-The final approximation is: 0.28112591635237394 for n = 32
+The final approximation is: 0.30230789881265957for n = 2
+The final approximation is: 0.20255813899533687for n = 4
+The final approximation is: 0.24080472695354477for n = 8
+The final approximation is: 0.27167754998156457for n = 16
+The final approximation is: 0.28938806389213895for n = 32
 ```
 
 The trapezoidal function is the following: 

@@ -127,3 +127,22 @@ def trapezoidal_rule(f, a, b, n, p):
     sum = sum * dx
     print("The final approximation is: " + str(sum) + "for n = " + str(n))
     return sum
+
+def simpsons_rule(f, a, b, n, p):
+    dx = (a + b)/n
+    x = b
+    fxn = float(eval(f))
+    x = a
+    fx0 = float(eval(f))
+    sum = fx0 + fxn
+    for i in range(0, n-1):
+        x = (p[i] + p[i+1]/2)
+        fval = float(eval(f))
+        sum = sum + (4.0 * fval)
+    for i in range(0, n-1):
+        x = p[i+1]
+        fxi_1 = float(eval(f))
+        sum = sum + fxi_1
+    sum = (sum * dx)/6.0
+    print("The final approximation is: " + str(sum) + "for n = " + str(n))
+    return sum
