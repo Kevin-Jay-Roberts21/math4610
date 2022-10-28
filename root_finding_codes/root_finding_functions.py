@@ -101,18 +101,23 @@ def newtons_method(f, fprime, x0, tol, maxiter):
     error = 10.0 * tol
     iter = 0
 
-    print("Results from Newtons Method:")
-    print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
+    # print("Results from Newtons Method:")
+    # print("{:<25} {:<25} {:<25}".format('Iterations', 'Approx. Root Location', 'Error'))
 
     while (error > tol and iter < maxiter):
+        if (fp == 0):
+            print("Quitting because we found division by 0")
+            return x0
         x1 = x0 - (f0 / fp)
         error = abs(x1 - x0)
-        print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
+        # print("{:<25} {:<25} {:<25}".format(iter, "{:.10f}".format(x1), "{:.10f}".format(error)))
         iter += 1
         x0 = x1
         x = x0
         f0 = float(eval(f))
         fp = float(eval(fprime))
+
+    return x1
 
     print("Final Approximation: " + str(x1))
 

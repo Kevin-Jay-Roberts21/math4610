@@ -1,4 +1,10 @@
 import matplotlib.pyplot as plt
+import sys
+import os.path
+sys.path.insert(0, "./math4610")
+from root_finding_codes.root_finding_functions import *
+
+
 import numpy as np
 
 def second_derivative_approx(f, x0, h):
@@ -71,10 +77,8 @@ def explicit_euler_logistic(a, b, P0, t0, f, T, n):
         P = P0
         f0 = float(eval(f))
 
-    plt.plot(tvals, xvals)
-    plt.show()
-
     print("Final Approximation: " + str(f0))
+    return [xvals, tvals]
 
 def implicit_euler_logistic(a, b, P0, t0, f, T, n):
 
@@ -82,36 +86,62 @@ def implicit_euler_logistic(a, b, P0, t0, f, T, n):
     tvals = []
     xvals = []
 
-    h = (T - t0)/n
+    h = (T - t0) / n
+
     P = P0
+    f0 = float(eval(f))
+
+    f = f.replace("P", "x")
+    f = f.replace("a", str(a))
+    f = f.replace("b", str(b))
+    f_prime = "1" + " - " + str(h) + "*" + str(a) + " + 2" + "*" + str(b) + "*" + str(h) + "*x"
+    f_P0 = "x" + " - " + str(h) + " * (" + f + ")" + " - " + str(P0)
+    Pbar = newtons_method(f_P0, f_prime, h, 0.0001, 10)
+
+    f = f.replace("x", "P")
+    f = f.replace(str(a), "a")
+    f = f.replace(str(b), "b")
 
     tvals.append(t0)
     xvals.append(P0)
 
-    f0 = float(eval(f))
     for i in range(1, n):
         t1 = t0 + h
-        P1 = P0 + (h * f0)
+        P1 = Pbar + (h * f0)
         tvals.append(t1)
-        xvals.append(P0)
+        xvals.append(Pbar)
         t0 = t1
-        P0 = P1
-        P = P0
+        Pbar = P1
+        P = Pbar
         f0 = float(eval(f))
 
-    plt.plot(tvals, xvals)
-    plt.show()
-
     print("Final Approximation: " + str(f0))
+    return [xvals, tvals]
 
-def exact_logistic(P, P_initial, alpha, beta, time):
-    a = alpha
-    b = beta
-    t = time
-    P0 = P_initial
-    P_final = float(eval(P))
-    print("Exact Solution to Logistic Equation: " + str(P_final))
-    return P_final
+def exact_logistic(a, b, P0, t0, f, T, n):
+    # initialize variables
+    tvals = []
+    xvals = []
+
+    h = (T - t0) / n
+
+    t = 0
+    f0 = float(eval(f))
+
+    tvals.append(t0)
+    xvals.append(P0)
+
+    xi = 0
+    for i in range(1, n):
+        t1 = t0 + h
+        xi = xi + h
+        t = t1
+        f0 = float(eval(f))
+        tvals.append(t1)
+        xvals.append(f0)
+        t0 = t1
+
+    return [xvals, tvals]
 
 def trapezoidal_rule(f, a, b, n):
     dx = (b - a)/n
