@@ -123,45 +123,45 @@ from approximating_functions.error_computations import *
 # print("The exact value at " + str(exact[1][10]) + " is " + str(exact[0][10]))
 
 # Task 3
-a = 0.2
-b = 0.0005
-P0 = 10.0
-implicit1 = implicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 50, 100)
-explicit1 = explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 50, 100)
-exact1 = exact_logistic(a, b, P0, 0, "(a*(P0/(a - P0*b))*np.exp(t*a))/(1 + b*(P0/(a - P0*b))*np.exp(t*a))", 50, 100)
-a = 0.01
-b = 0.0005
-P0 = 10.0
-implicit2 = implicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 600, 100)
-explicit2 = explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 600, 100)
-exact2 = exact_logistic(a, b, P0, 0, "(a*(P0/(a - P0*b))*np.exp(t*a))/(1 + b*(P0/(a - P0*b))*np.exp(t*a))", 600, 100)
-a = 2.0
-b = 0.0005
-P0 = 10.0
-implicit3 = implicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 8, 100)
-explicit3 = explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 8, 100)
-exact3 = exact_logistic(a, b, P0, 0, "(a*(P0/(a - P0*b))*np.exp(t*a))/(1 + b*(P0/(a - P0*b))*np.exp(t*a))", 8, 100)
-
-# now we must create a plot with all 3 graphs
-# use label='first plot', to label
-plt.plot(implicit1[1], implicit1[0], label='Implicit')
-plt.plot(explicit1[1], explicit1[0], label='Explicit')
-plt.plot(exact1[1], exact1[0], label='Exact')
-plt.legend()
-plt.show()
-plt.plot(implicit2[1], implicit2[0], label='Implicit')
-plt.plot(explicit2[1], explicit2[0], label='Explicit')
-plt.plot(exact2[1], exact2[0], label='Exact')
-plt.legend()
-plt.show()
-plt.plot(implicit3[1], implicit3[0], label='Implicit')
-plt.plot(explicit3[1], explicit3[0], label='Explicit')
-plt.plot(exact3[1], exact3[0], label='Exact')
-plt.legend()
-plt.show()
+# a = 0.2
+# b = 0.0005
+# P0 = 10.0
+# implicit1 = implicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 50, 100)
+# explicit1 = explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 50, 100)
+# exact1 = exact_logistic(a, b, P0, 0, "(a*(P0/(a - P0*b))*np.exp(t*a))/(1 + b*(P0/(a - P0*b))*np.exp(t*a))", 50, 100)
+# a = 0.01
+# b = 0.0005
+# P0 = 10.0
+# implicit2 = implicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 600, 100)
+# explicit2 = explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 600, 100)
+# exact2 = exact_logistic(a, b, P0, 0, "(a*(P0/(a - P0*b))*np.exp(t*a))/(1 + b*(P0/(a - P0*b))*np.exp(t*a))", 600, 100)
+# a = 2.0
+# b = 0.0005
+# P0 = 10.0
+# implicit3 = implicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 8, 100)
+# explicit3 = explicit_euler_logistic(a, b, P0, 0, "a*P - b*(P*P)", 8, 100)
+# exact3 = exact_logistic(a, b, P0, 0, "(a*(P0/(a - P0*b))*np.exp(t*a))/(1 + b*(P0/(a - P0*b))*np.exp(t*a))", 8, 100)
+#
+# # now we must create a plot with all 3 graphs
+# # use label='first plot', to label
+# plt.plot(implicit1[1], implicit1[0], label='Implicit')
+# plt.plot(explicit1[1], explicit1[0], label='Explicit')
+# plt.plot(exact1[1], exact1[0], label='Exact')
+# plt.legend()
+# plt.show()
+# plt.plot(implicit2[1], implicit2[0], label='Implicit')
+# plt.plot(explicit2[1], explicit2[0], label='Explicit')
+# plt.plot(exact2[1], exact2[0], label='Exact')
+# plt.legend()
+# plt.show()
+# plt.plot(implicit3[1], implicit3[0], label='Implicit')
+# plt.plot(explicit3[1], explicit3[0], label='Explicit')
+# plt.plot(exact3[1], exact3[0], label='Exact')
+# plt.legend()
+# plt.show()
 
 # Task 4
-# for n = 2
+# # for n = 2
 # a = 0
 # b = np.pi/4
 # trapezoidal_rule("np.exp(-x*x)", a, b, 2)
@@ -203,3 +203,34 @@ plt.show()
 # a = 0
 # b = np.pi/4
 # simpsons_rule("np.exp(-x*x)", a, b, 32)
+
+a = 0
+b = np.pi/4
+xvals = []
+tvals = [2, 4, 8, 16, 32, 64, 128, 256]
+SR_2 = simpsons_rule("np.exp(-x*x)", a, b, 2)
+SR_4 = simpsons_rule("np.exp(-x*x)", a, b, 4)
+SR_8 = simpsons_rule("np.exp(-x*x)", a, b, 8)
+SR_16 = simpsons_rule("np.exp(-x*x)", a, b, 16)
+SR_32 = simpsons_rule("np.exp(-x*x)", a, b, 32)
+SR_64 = simpsons_rule("np.exp(-x*x)", a, b, 64)
+SR_128 = simpsons_rule("np.exp(-x*x)", a, b, 128)
+SR_256 = simpsons_rule("np.exp(-x*x)", a, b, 256)
+# exact value (about)
+SR_5000 = simpsons_rule("np.exp(-x*x)", a, b, 5000)
+xvals.append(abs(SR_5000-SR_2))
+xvals.append(abs(SR_5000-SR_4))
+xvals.append(abs(SR_5000-SR_8))
+xvals.append(abs(SR_5000-SR_16))
+xvals.append(abs(SR_5000-SR_32))
+xvals.append(abs(SR_5000-SR_64))
+xvals.append(abs(SR_5000-SR_128))
+xvals.append(abs(SR_5000-SR_256))
+
+plt.xscale("log")
+plt.plot(xvals, tvals)
+plt.show()
+
+
+
+

@@ -227,74 +227,185 @@ Looking at how close the implicit approximation, and the explicit approximation 
 
 ## Task 4 
 
-For this task I had computed 5 different n values: n = 2, 4, 8, 16, and 32. know that we didn't have to compute for n = 32
-however, I wanted to see what would happen if we included more partitions. In my ``main.py`` file I ran the following code: 
+For this task I had computed 5 different n values: n = 2, 4, 8, 16, and 32. Know that I didn't have to compute for n = 32
+however, I wanted to see what would happen if I included more partitions. In my ``main.py`` file I ran the following code: 
 
 ```
-# for n = 2
-partitions = [0, np.pi/4]
-a = partitions[0]
-b = partitions[1]
-trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
+a = 0
+b = np.pi/4
+trapezoidal_rule("np.exp(-x*x)", a, b, 2)
 # for n = 4
-partitions = [0, np.pi/12, 2*np.pi/12, 3*np.pi/12]
-a = partitions[0]
-b = partitions[3]
-trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
+a = 0
+b = np.pi/4
+trapezoidal_rule("np.exp(-x*x)", a, b, 4)
 # for n = 8
-partitions = [0, np.pi/28, 2*np.pi/28, 3*np.pi/28, 4*np.pi/28, 5*np.pi/28, 6*np.pi/28,  7*np.pi/28]
-a = partitions[0]
-b = partitions[7]
-trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
+a = 0
+b = np.pi/4
+trapezoidal_rule("np.exp(-x*x)", a, b, 8)
 # for n = 16
-partitions = [0, np.pi/60, 2*np.pi/60, 3*np.pi/60, 4*np.pi/60, 5*np.pi/60, 6*np.pi/60, 7*np.pi/60, 8*np.pi/60, 9*np.pi/60, 10*np.pi/60, 11*np.pi/60, 12*np.pi/60, 13*np.pi/60, 14*np.pi/60, 15*np.pi/60]
-a = partitions[0]
-b = partitions[15]
-trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
+a = 0
+b = np.pi/4
+trapezoidal_rule("np.exp(-x*x)", a, b, 16)
 # for n = 32
-partitions = [0, 1*np.pi/124, 2*np.pi/124, 3*np.pi/124, 4*np.pi/124, 5*np.pi/124, 6*np.pi/124, 7*np.pi/124, 8*np.pi/124, 9*np.pi/124, 10*np.pi/124, 11*np.pi/124, 12*np.pi/124, 13*np.pi/124, 14*np.pi/124, 15*np.pi/124, 16*np.pi/124, 17*np.pi/124, 18*np.pi/124, 19*np.pi/124, 20*np.pi/124, 21*np.pi/124, 22*np.pi/124, 23*np.pi/124, 24*np.pi/124, 25*np.pi/124, 26*np.pi/124, 27*np.pi/124, 28*np.pi/124, 29*np.pi/124, 30*np.pi/124, 31*np.pi/124]
-a = partitions[0]
-b = partitions[31]
-trapezoidal_rule("np.exp(-x*x)", a, b, len(partitions), partitions)
+a = 0
+b = np.pi/4
+trapezoidal_rule("np.exp(-x*x)", a, b, 32)
 ```
 
-Notice that the defined trapezoidal_rule() function takes a function f, end point a, end point b, number of partitions, 
-and the partitions list. The following output I got is: 
+Notice that the defined trapezoidal_rule() function takes a function f, end point a, end point b, and the number of partitions. 
+The following output I get is: 
 
 ```
-The final approximation is: 0.30230789881265957for n = 2
-The final approximation is: 0.20255813899533687for n = 4
-The final approximation is: 0.24080472695354477for n = 8
-The final approximation is: 0.27167754998156457for n = 16
-The final approximation is: 0.28938806389213895for n = 32
+The final approximation is: 0.6388862805734845for n = 2
+The final approximation is: 0.6471507696813964for n = 4
+The final approximation is: 0.6491991053630145for n = 8
+The final approximation is: 0.6497100964398593for n = 16
+The final approximation is: 0.6498377761980951for n = 32
 ```
+
+From the output above, it looks as though the sequence converges to about 0.6498. 
 
 The trapezoidal function is the following: 
 
 ```
-def trapezoidal_rule(f, a, b, n, p):
+def trapezoidal_rule(f, a, b, n):
     dx = (b - a)/n
     x = b
     fxn = float(eval(f))
     x = a
     fx0 = float(eval(f))
     sum = 0.5 * (fx0 + fxn)
-    for i in range(1, n-2):
-
-        fxi = p[i]
-        sum = sum + fxi
+    xk = 0
+    for k in range(1, n):
+        xk = xk + (b - a) / n
+        x = xk
+        fxk = float(eval(f))
+        sum = sum + fxk
     sum = sum * dx
     print("The final approximation is: " + str(sum) + "for n = " + str(n))
     return sum
 ```
 
-Notice that in the code I had to include the partition list to be able to evaluate f and certain x values. From the output, 
-we cannot seem to get an exact value to which the sequence is converging to. But from the ``n = 32`` case, we can see that
-the sequence will possibly converge to 30.
-
 ## Task 5 
 
+For this task I did something very similar to what I did for the Trapezoidal method. I had computed 5 different n values:
+n = 2, 4, 8, 16, and 32. Know that I didn't have to compute for n = 32 however, I wanted to see what would happen if I 
+included more partitions. In my ``main.py`` file I ran the following code: 
 
+```
+a = 0
+b = np.pi/4
+simpsons_rule("np.exp(-x*x)", a, b, 2)
+# for n = 4
+a = 0
+b = np.pi/4
+simpsons_rule("np.exp(-x*x)", a, b, 4)
+# for n = 8
+a = 0
+b = np.pi/4
+simpsons_rule("np.exp(-x*x)", a, b, 8)
+# for n = 16
+a = 0
+b = np.pi/4
+simpsons_rule("np.exp(-x*x)", a, b, 16)
+# for n = 32
+a = 0
+b = np.pi/4
+simpsons_rule("np.exp(-x*x)", a, b, 32)
+```
+
+Notice that the defined simpsons_rule() function takes a function f, end point a, end point b, and the number of partitions. 
+The following output I get is: 
+
+```
+The final approximation is: 0.20153859920843972for n = 2
+The final approximation is: 0.3526675840434031for n = 4
+The final approximation is: 0.5537979268005845for n = 8
+The final approximation is: 0.6515083716983154for n = 16
+The final approximation is: 0.6994869133544624for n = 32
+```
+
+From the output above, it looks as though the sequence converges to about 0.6995. 
+
+The simpsons function is the following: 
+
+```
+def simpsons_rule(f, a, b, n):
+    dx = (a + b)/n
+    x = b
+    fxn = float(eval(f))
+    x = a
+    fx0 = float(eval(f))
+    sum = fx0 + fxn
+    xk = 0
+    for k in range(1, n-2, 2):
+        xk = xk + (b-a)/n
+        x = xk
+        fxk = float(eval(f))
+        sum = sum + (4.0 * fxk)
+    xk = 0
+    for i in range(2, n-2, 2):
+        xk = xk + (b - a)/n
+        x = xk
+        fxk = float(eval(f))
+        sum = sum + (2.0 * fxk)
+    sum = (sum * dx)/3.0
+    print("The final approximation is: " + str(sum) + "for n = " + str(n))
+    return sum
+```
+
+Now performing a computational convergence rate for the Simpson's rule. We desire to find an approximation for each
+n = 2, 4, 8, 16, 32, 64, 128, 256. Then we need to compare these approximations to an exact value. I computed an approximate
+exact value by letting n = 5000. After doing this I compared each of the approximations to my exact value and plotted them. 
+My main code looks like the following: 
+
+```
+a = 0
+b = np.pi/4
+xvals = []
+tvals = [2, 4, 8, 16, 32, 64, 128, 256]
+SR_2 = simpsons_rule("np.exp(-x*x)", a, b, 2)
+SR_4 = simpsons_rule("np.exp(-x*x)", a, b, 4)
+SR_8 = simpsons_rule("np.exp(-x*x)", a, b, 8)
+SR_16 = simpsons_rule("np.exp(-x*x)", a, b, 16)
+SR_32 = simpsons_rule("np.exp(-x*x)", a, b, 32)
+SR_64 = simpsons_rule("np.exp(-x*x)", a, b, 64)
+SR_128 = simpsons_rule("np.exp(-x*x)", a, b, 128)
+SR_256 = simpsons_rule("np.exp(-x*x)", a, b, 256)
+# exact value (about)
+SR_5000 = simpsons_rule("np.exp(-x*x)", a, b, 5000)
+xvals.append(abs(SR_5000-SR_2))
+xvals.append(abs(SR_5000-SR_4))
+xvals.append(abs(SR_5000-SR_8))
+xvals.append(abs(SR_5000-SR_16))
+xvals.append(abs(SR_5000-SR_32))
+xvals.append(abs(SR_5000-SR_64))
+xvals.append(abs(SR_5000-SR_128))
+xvals.append(abs(SR_5000-SR_256))
+
+plt.xscale("log")
+plt.plot(xvals, tvals)
+plt.show()
+```
+
+And the corresponding outputted values and graphs are the following: 
+
+```
+The final approximation is: 0.20153859920843972for n = 2
+The final approximation is: 0.3526675840434031for n = 4
+The final approximation is: 0.5537979268005845for n = 8
+The final approximation is: 0.6515083716983154for n = 16
+The final approximation is: 0.6994869133544624for n = 32
+The final approximation is: 0.7232389983736529for n = 64
+The final approximation is: 0.7350536557347617for n = 128
+The final approximation is: 0.7409453876509926for n = 256
+The final approximation is: 0.7465257648773337for n = 5000
+```
+
+![alt text](homework5_images/convergence_computation_1.png)
+
+From the graph above, we can see that the error gets closer and closer to 0 as we increase the number of n intervals. From 
+the numerical output, we can see that the approximation is about 0.7465.
 
 ## Code Appendix
 
@@ -422,5 +533,45 @@ def newtons_method(f, fprime, x0, tol, maxiter):
     return x1
 
     print("Final Approximation: " + str(x1))
+    
+def trapezoidal_rule(f, a, b, n):
+    dx = (b - a)/n
+    x = b
+    fxn = float(eval(f))
+    x = a
+    fx0 = float(eval(f))
+    sum = 0.5 * (fx0 + fxn)
+    xk = 0
+    for k in range(1, n):
+        xk = xk + (b - a) / n
+        x = xk
+        fxk = float(eval(f))
+        sum = sum + fxk
+    sum = sum * dx
+    print("The final approximation is: " + str(sum) + "for n = " + str(n))
+    return sum
+    
+def simpsons_rule(f, a, b, n):
+    dx = (a + b)/n
+    x = b
+    fxn = float(eval(f))
+    x = a
+    fx0 = float(eval(f))
+    sum = fx0 + fxn
+    xk = 0
+    for k in range(1, n-2, 2):
+        xk = xk + (b-a)/n
+        x = xk
+        fxk = float(eval(f))
+        sum = sum + (4.0 * fxk)
+    xk = 0
+    for i in range(2, n-2, 2):
+        xk = xk + (b - a)/n
+        x = xk
+        fxk = float(eval(f))
+        sum = sum + (2.0 * fxk)
+    sum = (sum * dx)/3.0
+    print("The final approximation is: " + str(sum) + "for n = " + str(n))
+    return sum
 ```
 
