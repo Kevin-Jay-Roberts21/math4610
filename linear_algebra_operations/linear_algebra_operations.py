@@ -28,11 +28,11 @@ def scalar_mult_of_number_and_vector(number, x):
 
 def L1_norm_of_vector(x):
 
-    sum_of_squared_elements = 0
+    sum_of_abs_elements = 0
     for i in range(0, len(x)):
-        sum_of_squared_elements += (np.abs(x[i]))
+        sum_of_abs_elements += (np.abs(x[i]))
 
-    return sum_of_squared_elements
+    return sum_of_abs_elements
 
 def L2_norm_of_vector(x):
 

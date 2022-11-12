@@ -248,18 +248,18 @@ w = [7, 8, 9]
 A = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 B = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
 number = 2
-print("The addition of vector u and v is: " + str(vector_addition(u, v)))
-print("The difference of vector u and v is: " + str(vector_subtraction(u, v)))
-print("The scalar multiple of number=2 and u is: " + str(scalar_mult_of_number_and_vector(number, u)))
-print("The L1 norm of n of u is: " + str(L1_norm_of_vector(u)))
-print("The L2 norm of n of u is: " + str(L2_norm_of_vector(u)))
-print("The L_infinity norm of n of u is: " + str(Linf_norm_of_vector(u)))
-print("The dot product of u and v is: " + str(dot_product(u, v)))
-print("The cross product of u and v is: " + str(cross_product(u, v)))
-print("The triple product of u, v and w is: " + str(triple_product(u, v, w)))
-print("The action of matrix A on the vector u is: " + str(action_of_matrix_on_vector(A, u)))
-print("The sum of matrices A and B is: " + str(sum_of_matrices(A, B)))
-print("The difference of matrices A and B is: " + str(difference_of_matrices(A, B)))
+# print("The addition of vector u and v is: " + str(vector_addition(u, v)))
+# print("The difference of vector u and v is: " + str(vector_subtraction(u, v)))
+# print("The scalar multiple of number=2 and u is: " + str(scalar_mult_of_number_and_vector(number, u)))
+# print("The L1 norm of u is: " + str(L1_norm_of_vector(u)))
+# print("The L2 norm of u is: " + str(L2_norm_of_vector(u)))
+# print("The L_infinity norm of u is: " + str(Linf_norm_of_vector(u)))
+# print("The dot product of u and v is: " + str(dot_product(u, v)))
+# print("The cross product of u and v is: " + str(cross_product(u, v)))
+# print("The triple product of u, v and w is: " + str(triple_product(u, v, w)))
+# print("The action of matrix A on the vector u is: " + str(action_of_matrix_on_vector(A, u)))
+# print("The sum of matrices A and B is: " + str(sum_of_matrices(A, B)))
+# print("The difference of matrices A and B is: " + str(difference_of_matrices(A, B)))
 print("The product of matrices A and B is: " + str(product_of_matrices(A, B)))
 
 
