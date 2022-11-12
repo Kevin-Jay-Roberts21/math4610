@@ -242,12 +242,12 @@ from linear_algebra_operations.linear_algebra_operations import *
 # Task 2
 
 # Task 5
-u = [1, 2, 3]
-v = [4, 5, 6]
-w = [7, 8, 9]
-A = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-B = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
-number = 2
+# u = [1, 2, 3]
+# v = [4, 5, 6]
+# w = [7, 8, 9]
+# A = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+# B = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+# number = 2
 # print("The addition of vector u and v is: " + str(vector_addition(u, v)))
 # print("The difference of vector u and v is: " + str(vector_subtraction(u, v)))
 # print("The scalar multiple of number=2 and u is: " + str(scalar_mult_of_number_and_vector(number, u)))
@@ -260,7 +260,7 @@ number = 2
 # print("The action of matrix A on the vector u is: " + str(action_of_matrix_on_vector(A, u)))
 # print("The sum of matrices A and B is: " + str(sum_of_matrices(A, B)))
 # print("The difference of matrices A and B is: " + str(difference_of_matrices(A, B)))
-print("The product of matrices A and B is: " + str(product_of_matrices(A, B)))
+# print("The product of matrices A and B is: " + str(product_of_matrices(A, B)))
 
 
 
