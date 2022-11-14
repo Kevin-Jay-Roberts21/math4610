@@ -1,5 +1,8 @@
+import math
+
 import matplotlib.pyplot as plt
 import sys
+import time
 import os.path
 sys.path.insert(0, "./math4610")
 from root_finding_codes.root_finding_functions import *
@@ -182,3 +185,43 @@ def simpsons_rule(f, a, b, n):
     sum = (sum * dx)/3.0
     print("The final approximation is: " + str(sum) + "for n = " + str(n))
     return sum
+
+def my_simpsons_rule(f, a, b, n):
+    if (n % 2) != 0:
+        return "n must be an even number for Simpson's Rule."
+
+    start = time.time()
+    h = 2 * ((b - a)/n)
+    sum = 0
+    x0 = (b-a)/n
+    for i in range(0, int(n/2)):
+        x = x0
+        fx0 = float(eval(f))
+        x1 = x0 + (b-a)/n
+        x = x1
+        fx1 = float(eval(f))
+        x2 = x1 + (b-a)/n
+        x = x2
+        fx2 = float(eval(f))
+        sum += (fx0 + 4*fx1 + fx2)*(h/3)
+        x0 = x2
+    end = time.time()
+
+    totaltime = end-start
+    print("The time it took to generate pi was: " + str(totaltime))
+    return 3 * sum
+
+def approximate_e(n):
+
+    sum = 0
+    start = time.time()
+    for i in range(0, n):
+        sum += 1/(math.factorial(i))
+
+    end = time.time()
+    totaltime = end - start
+    print("The time it took to generate e was: " + str(totaltime))
+    return sum
+
+
+
