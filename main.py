@@ -186,7 +186,7 @@ from linear_algebra_operations.linear_algebra_operations import *
 # trapezoidal_rule("np.exp(-x*x)", a, b, 32)
 
 # Task 5
-# # for n = 2
+# for n = 2
 # a = 0
 # b = np.pi/4
 # simpsons_rule("np.exp(-x*x)", a, b, 2)
@@ -243,15 +243,15 @@ from linear_algebra_operations.linear_algebra_operations import *
 
 # Task 2
 
-# pi_approx = my_simpsons_rule("1/(np.sqrt(1-(x*x)))", 0, 0.5, 100000)
-# print("Approximation of pi using Simpson's Rule: " + str(pi_approx))
-# print("Pi exact (according to computer's np accuracy): " + str(np.pi))
+pi_approx = my_simpsons_rule("1/(np.sqrt(1-(x*x)))", 0, 0.5, 1000000)
+print("Approximation of pi using Simpson's Rule: " + str(pi_approx))
+print("Pi exact (according to computer's np accuracy): " + str(np.pi))
 
 # Task 4
 
-e_approx = approximate_e(50)
-print("Approximation of e using Maclaurin Series: " + str(e_approx))
-print("e exact (according to the computer's np accuracy): " + str(math.e))
+# e_approx = approximate_e(50)
+# print("Approximation of e using Maclaurin Series: " + str(e_approx))
+# print("e exact (according to the computer's np accuracy): " + str(math.e))
 
 
 
