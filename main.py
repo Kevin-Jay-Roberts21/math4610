@@ -256,12 +256,12 @@ from linear_algebra_operations.linear_algebra_operations import *
 
 
 # Task 5
-u = [1, 2, 3]
-v = [4, 5, 6]
-w = [7, 8, 9]
-A = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-B = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
-number = 2
+# u = [1, 2, 3]
+# v = [4, 5, 6]
+# w = [7, 8, 9]
+# A = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+# B = [[10, 11, 12], [13, 14, 15], [16, 17, 18]]
+# number = 2
 # print("The addition of vector u and v is: " + str(vector_addition(u, v)))
 # print("The difference of vector u and v is: " + str(vector_subtraction(u, v)))
 # print("The scalar multiple of number=2 and u is: " + str(scalar_mult_of_number_and_vector(number, u)))
@@ -274,9 +274,33 @@ number = 2
 # print("The action of matrix A on the vector u is: " + str(action_of_matrix_on_vector(A, u)))
 # print("The sum of matrices A and B is: " + str(sum_of_matrices(A, B)))
 # print("The difference of matrices A and B is: " + str(difference_of_matrices(A, B)))
-print("The product of matrices A and B is: " + str(product_of_matrices(A, B)))
+# print("The product of matrices A and B is: " + str(product_of_matrices(A, B)))
 
 
+####################
+#### HOMEWORK 6 ####
+####################
 
+# Task 4
+A1 = []
+B1 = []
+for i in range(0, 100):
+    new_row = []
+    for j in range(0, 100):
+        if (j % 2) == 0:
+            new_row.append(0)
+        else:
+            new_row.append(1)
+    A1.append(new_row)
+
+for i in range(0, 100):
+    new_row = []
+    for j in range(0, 100):
+        if (j % 2) != 0:
+            new_row.append(0)
+        else:
+            new_row.append(1)
+    B1.append(new_row)
+print("The Hadamard product of matrix A1 and B1 is: " + str(hadamard_product_of_matrices(A1, B1)))
 
 

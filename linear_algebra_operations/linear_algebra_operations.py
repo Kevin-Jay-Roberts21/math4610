@@ -177,3 +177,27 @@ def product_of_matrices(a, b):
         new_matrix.append(new_row)
 
     return new_matrix
+
+def hadamard_product_of_matrices(a, b):
+
+    # checking for lists
+    for i in range(0, len(a)):
+        if type(a[i]) != list:
+            return "The elements of the matrix must contain lists for it to be a matrix."
+    for i in range(0, len(b)):
+        if type(b[i]) != list:
+            return "The elements of the matrix must contain lists for it to be a matrix."
+
+    if len(a[0]) != len(b[0]) or len(a) != len(b):
+        return "The # of columns of the first matrix must equal the # of cols of the second matrix and same with number of rows."
+
+    new_matrix = []
+
+    for i in range(0, len(a)):
+        new_row = []
+        for j in range(0, len(b)):
+            element = a[i][j]*b[i][j]
+            new_row.append(element)
+        new_matrix.append(new_row)
+
+    return new_matrix
