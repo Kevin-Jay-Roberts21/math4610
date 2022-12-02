@@ -282,25 +282,29 @@ from linear_algebra_operations.linear_algebra_operations import *
 ####################
 
 # Task 4
-A1 = []
-B1 = []
-for i in range(0, 100):
-    new_row = []
-    for j in range(0, 100):
-        if (j % 2) == 0:
-            new_row.append(0)
-        else:
-            new_row.append(1)
-    A1.append(new_row)
+# A1 = []
+# B1 = []
+# for i in range(0, 100):
+#     new_row = []
+#     for j in range(0, 100):
+#         if (j % 2) == 0:
+#             new_row.append(0)
+#         else:
+#             new_row.append(1)
+#     A1.append(new_row)
+#
+# for i in range(0, 100):
+#     new_row = []
+#     for j in range(0, 100):
+#         if (j % 2) != 0:
+#             new_row.append(0)
+#         else:
+#             new_row.append(1)
+#     B1.append(new_row)
+# print("The Hadamard product of matrix A1 and B1 is: " + str(hadamard_product_of_matrices(A1, B1)))
 
-for i in range(0, 100):
-    new_row = []
-    for j in range(0, 100):
-        if (j % 2) != 0:
-            new_row.append(0)
-        else:
-            new_row.append(1)
-    B1.append(new_row)
-print("The Hadamard product of matrix A1 and B1 is: " + str(hadamard_product_of_matrices(A1, B1)))
+# Task 5
 
-
+u = [1, 2, 3, 4, 5]
+v = [6, 7, 8, 9, 10]
+print("The outer product of vectors u and v is: " + str(outer_product(u, v)))

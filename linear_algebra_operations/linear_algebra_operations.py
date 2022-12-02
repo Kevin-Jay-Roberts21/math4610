@@ -201,3 +201,19 @@ def hadamard_product_of_matrices(a, b):
         new_matrix.append(new_row)
 
     return new_matrix
+
+def outer_product(u, v):
+    new_matrix = []
+
+    # check to make sure the lengths of the vectors are the same
+    if len(u) != len(v):
+        return "Vectors must be the same length."
+
+    for i in range(0, len(u)):
+        new_row = []
+        for j in range(0, len(v)):
+            element = u[i]*v[j]
+            new_row.append(element)
+        new_matrix.append(new_row)
+
+    return new_matrix

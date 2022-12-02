@@ -273,4 +273,45 @@ def hadamard_product_of_matrices(a, b):
 
 ## Task 5 
 
+I decided to create the outer product of two vectors in python code. The following is what I inputted: 
 
+```
+u = [1, 2, 3, 4, 5]
+v = [6, 7, 8, 9, 10]
+print("The outer product of vectors u and v is: " + str(outer_product(u, v)))
+```
+
+The corresponding output: 
+
+```
+The outer product of vectors u and v is: [[6, 7, 8, 9, 10], [12, 14, 16, 18, 20], [18, 21, 24, 27, 30], [24, 28, 32, 36, 40], [30, 35, 40, 45, 50]]
+```
+
+And finally the code I wrote to do the operations: 
+
+```
+def outer_product(u, v):
+    new_matrix = []
+
+    # check to make sure the lengths of the vectors are the same
+    if len(u) != len(v):
+        return "Vectors must be the same length."
+
+    for i in range(0, len(u)):
+        new_row = []
+        for j in range(0, len(v)):
+            element = u[i]*v[j]
+            new_row.append(element)
+        new_matrix.append(new_row)
+
+    return new_matrix
+```
+
+The routine can be extended to matrices. The way to do it would be to take the first row of a matrix A, transpose it, and
+multiply it by the first row of a matrix B. The add that outer product to the transpose of the second row of A, multiplied
+by the second row of B. This matrix multiplication is now represented as the two outer products of two vectors. The restrictions
+of the matrices are similar to that of regular matrix multiplication. Namely, the matrix A being multiplied by matrix B 
+must have the same number of columns as the matrix B has rows. To implement an algorithm for the outer product of two vectors
+in parallel, I'd do something very similar to what I did in writing the hadamard product of two vectors in parallel. I'd
+optimize the number of threads my machine has (which is 8), and use them together to perform all the products of the vector
+elements.
