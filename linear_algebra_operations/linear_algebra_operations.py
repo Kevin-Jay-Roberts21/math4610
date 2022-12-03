@@ -217,3 +217,29 @@ def outer_product(u, v):
         new_matrix.append(new_row)
 
     return new_matrix
+
+def kronecker_matrix_product(a, b):
+
+    new_matrix = []
+    for i in range(len(a[0]) * len(b[0])):
+        new_matrix.append([0] * (len(a) * len(b)))
+
+    for i in range(len(a[0])):
+        for k in range(len(a)):
+            for j in range(len(b[0])):
+                for l in range(len(b)):
+                    new_matrix[i * len(b[0]) + k][j * len(b) + l] = a[i][j] * b[k][l];
+
+    string = ""
+
+    for i in range(len(a[0]) * len(b[0])):
+        string += (str(new_matrix[i]) + "\n")
+
+    return string
+
+
+
+
+
+
+

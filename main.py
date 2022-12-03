@@ -278,7 +278,7 @@ from linear_algebra_operations.linear_algebra_operations import *
 
 
 ####################
-#### HOMEWORK 6 ####
+#### HOMEWORK 7 ####
 ####################
 
 # Task 4
@@ -305,6 +305,19 @@ from linear_algebra_operations.linear_algebra_operations import *
 
 # Task 5
 
-u = [1, 2, 3, 4, 5]
-v = [6, 7, 8, 9, 10]
-print("The outer product of vectors u and v is: " + str(outer_product(u, v)))
+# u = [1, 2, 3, 4, 5]
+# v = [6, 7, 8, 9, 10]
+# print("The outer product of vectors u and v is: " + str(outer_product(u, v)))
+
+
+
+####################
+#### HOMEWORK 8 ####
+####################
+
+# Task 1
+
+A = [[1, 2], [3, 4]]
+B = [[0, 5], [6, 7]]
+
+print("The Kronecker Product of Matrix A and Matrix B is: \n" + str(kronecker_matrix_product(A, B)))
