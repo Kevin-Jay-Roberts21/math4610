@@ -6,6 +6,7 @@ from root_finding_codes.root_finding_functions import *
 from approximating_functions.second_derivative_approx import *
 from approximating_functions.error_computations import *
 from linear_algebra_operations.linear_algebra_operations import *
+from linear_algebra_operations.eigen_value_solutions import *
 
 ####################
 #### HOMEWORK 1 ####
@@ -319,5 +320,12 @@ from linear_algebra_operations.linear_algebra_operations import *
 
 A = [[1, 2], [3, 4]]
 B = [[0, 5], [6, 7]]
-
 print("The Kronecker Product of Matrix A and Matrix B is: \n" + str(kronecker_matrix_product(A, B)))
+
+# Task 2
+
+A = []
+v = []
+tol = 0.00001
+maxiter = 1000
+print("Resulting lambda from the power method: " + str(power_method(A, v, tol, maxiter)))

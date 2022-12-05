@@ -34,7 +34,12 @@ The code I wrote to perform this operation:
 
 ## Task 2 
 
+For this task I chose to write a version of the power method in python code. The code I wrote for computing the method can
+be found [here]() and I called the function My inputs look like the following: 
 
+```
+
+```
 
 ## Task 3 
 
