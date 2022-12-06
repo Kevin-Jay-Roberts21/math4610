@@ -41,5 +41,20 @@ def power_method_2(a, v_0, tol, maxiter):
 
     return l_0
 
-def jacobi_iteration(a, b, x, tol, maxiter):
-    pass
+def jacobi_iteration(a, b, x0, tol, maxiter):
+    error = 10 * tol
+    iter = 0
+    r0 = vector_subtraction(b, action_of_matrix_on_vector(a, x0))
+
+    while (error > tol and iter < maxiter):
+
+        for i in range(0, len(a)):
+            r0[i] = r0[i]/a[i][i]
+
+        x1 = vector_addition(x0, r0)
+        error = L2_norm_of_vector(vector_subtraction(x1, x0))
+        iter += 1
+        x0 = x1
+        r0 = vector_subtraction(b, action_of_matrix_on_vector(a, x1))
+
+    return x0

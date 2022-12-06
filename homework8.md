@@ -129,3 +129,62 @@ def power_method_2(a, v_0, tol, maxiter):
 
 ## Task 5 
 
+For this task I tested that my code would work on a very small matrix and vectors. After I verified that the Jaocbi iteration
+was functioning properly, I created a 100x100 diagonally dominant matrix and two corresponding 100x1 vectors that are filled 
+with random numbers between 1 and 10. The following is the code input and this code be found in my github repository [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py)
+under Homework 8 in Task 5: 
+
+```python
+# creating a giant 100x100 matrix
+A = []
+for i in range(0, 100):
+     new_row = []
+     for j in range(0, 100):
+          if (i == j):
+               new_row.append(i + 5)
+          else:
+               new_row.append(0.1)
+     A.append(new_row)
+
+# for i in range(0, len(A)):
+#      print(A[i])
+
+# 3 creating b and x0 full of random numbers between 1 and 10
+b = []
+x0 = []
+for i in range(0, len(A)):
+     b.append(random.randint(1, 10))
+     x0.append(random.randint(1, 10))
+
+tol = 0.00001
+maxiter = 100000
+print("Resulting vector from the Jacobi iteration: " + str(jacobi_iteration(A, b, x0, tol, maxiter)))
+```
+
+The output I got was a 100x1 matrix, which I won't show all of here as it's really big but I'll show a snippet of the ouput:
+
+```
+Resulting vector from the Jacobi iteration: [0.14815658183678332, 1.3094859672194572, ...
+```
+
+The code I wrote to perform this jacobi iteration can be found [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/linear_algebra_operations/eigen_value_solutions.py) and is the following: 
+
+```python
+def jacobi_iteration(a, b, x0, tol, maxiter):
+    error = 10 * tol
+    iter = 0
+    r0 = vector_subtraction(b, action_of_matrix_on_vector(a, x0))
+
+    while (error > tol and iter < maxiter):
+
+        for i in range(0, len(a)):
+            r0[i] = r0[i]/a[i][i]
+
+        x1 = vector_addition(x0, r0)
+        error = L2_norm_of_vector(vector_subtraction(x1, x0))
+        iter += 1
+        x0 = x1
+        r0 = vector_subtraction(b, action_of_matrix_on_vector(a, x1))
+
+    return x0
+```

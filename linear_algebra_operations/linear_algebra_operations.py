@@ -236,10 +236,3 @@ def kronecker_matrix_product(a, b):
         string += (str(new_matrix[i]) + "\n")
 
     return string
-
-
-
-
-
-
-

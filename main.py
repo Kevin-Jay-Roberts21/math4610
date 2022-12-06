@@ -1,6 +1,7 @@
 import math
 
 import matplotlib.pyplot as plt
+import random
 
 from root_finding_codes.root_finding_functions import *
 from approximating_functions.second_derivative_approx import *
@@ -324,32 +325,48 @@ from linear_algebra_operations.eigen_value_solutions import *
 
 # Task 2
 
-A = [[1, 2, 3, 2, 4, 1, 2, 5, 3, 4],
-     [3, 2, 1, 4, 2, 5, 3, 1, 5, 3],
-     [2, 1, 3, 3, 2, 1, 2, 2, 1, 2],
-     [2, 3, 4, 5, 3, 2, 1, 4, 5, 3],
-     [3, 2, 1, 4, 3, 2, 1, 5, 5, 1],
-     [1, 1, 1, 2, 4, 2, 5, 2, 1, 4],
-     [3, 2, 4, 5, 3, 2, 3, 4, 1, 2],
-     [4, 3, 1, 2, 1, 3, 4, 3, 5, 2],
-     [1, 1, 1, 1, 2, 3, 5, 4, 3, 2],
-     [4, 4, 3, 2, 1, 1, 2, 2, 3, 5]]
-v = [3, 2, 2, 3, 2, 1, 4, 3, 2, 2]
-tol = 0.00001
-maxiter = 1000
-print("Resulting lambda from the power method: " + str(power_method_1(A, v, tol, maxiter)))
+# A = [[1, 2, 3, 2, 4, 1, 2, 5, 3, 4],
+#      [3, 2, 1, 4, 2, 5, 3, 1, 5, 3],
+#      [2, 1, 3, 3, 2, 1, 2, 2, 1, 2],
+#      [2, 3, 4, 5, 3, 2, 1, 4, 5, 3],
+#      [3, 2, 1, 4, 3, 2, 1, 5, 5, 1],
+#      [1, 1, 1, 2, 4, 2, 5, 2, 1, 4],
+#      [3, 2, 4, 5, 3, 2, 3, 4, 1, 2],
+#      [4, 3, 1, 2, 1, 3, 4, 3, 5, 2],
+#      [1, 1, 1, 1, 2, 3, 5, 4, 3, 2],
+#      [4, 4, 3, 2, 1, 1, 2, 2, 3, 5]]
+# v = [3, 2, 2, 3, 2, 1, 4, 3, 2, 2]
+# tol = 0.00001
+# maxiter = 1000
+# print("Resulting lambda from the power method: " + str(power_method_1(A, v, tol, maxiter)))
 
 # Task 3
 
-print("Resulting lambda from the power method: " + str(power_method_2(A, v, tol, maxiter)))
+# print("Resulting lambda from the power method: " + str(power_method_2(A, v, tol, maxiter)))
 
 # Task 5
 
 # creating a giant 100x100 matrix
 A = []
+for i in range(0, 100):
+     new_row = []
+     for j in range(0, 100):
+          if (i == j):
+               new_row.append(i + 5)
+          else:
+               new_row.append(0.1)
+     A.append(new_row)
 
+# for i in range(0, len(A)):
+#      print(A[i])
 
-v = [1, 2, 3]
+# 3 creating b and x0 full of random numbers between 1 and 10
+b = []
+x0 = []
+for i in range(0, len(A)):
+     b.append(random.randint(1, 10))
+     x0.append(random.randint(1, 10))
+
 tol = 0.00001
-maxiter = 1000
-print("Resulting lambda from the power method: " + str(power_method_1(A, v, tol, maxiter)))
+maxiter = 100000
+print("Resulting vector from the Jacobi iteration: " + str(jacobi_iteration(A, b, x0, tol, maxiter)))
