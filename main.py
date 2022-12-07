@@ -347,26 +347,51 @@ from linear_algebra_operations.eigen_value_solutions import *
 # Task 5
 
 # creating a giant 100x100 matrix
-A = []
-for i in range(0, 100):
-     new_row = []
-     for j in range(0, 100):
-          if (i == j):
-               new_row.append(i + 5)
-          else:
-               new_row.append(0.1)
-     A.append(new_row)
-
+# A = []
+# for i in range(0, 100):
+#      new_row = []
+#      for j in range(0, 100):
+#           if (i == j):
+#                new_row.append(i + 5)
+#           else:
+#                new_row.append(0.1)
+#      A.append(new_row)
+#
+# # for i in range(0, len(A)):
+# #      print(A[i])
+#
+# # 3 creating b and x0 full of random numbers between 1 and 10
+# b = []
+# x0 = []
 # for i in range(0, len(A)):
-#      print(A[i])
+#      b.append(random.randint(1, 10))
+#      x0.append(random.randint(1, 10))
+#
+# tol = 0.00001
+# maxiter = 100000
+# print("Resulting vector from the Jacobi iteration: " + str(jacobi_iteration(A, b, x0, tol, maxiter)))
 
-# 3 creating b and x0 full of random numbers between 1 and 10
-b = []
-x0 = []
-for i in range(0, len(A)):
-     b.append(random.randint(1, 10))
-     x0.append(random.randint(1, 10))
 
+
+####################
+#### HOMEWORK 9 ####
+####################
+
+# Task 1
+# A = [[1, 0.1, 0.1], [0.1, 3, 0.1], [0.1, 0.1, 2]]
+# v = [1, 2, 3]
+# tol = 0.00001
+# maxiter = 10000
+# print("The smallest eigenvalue of the matrix A: " + str(inverse_power_method(A, v, tol, maxiter)))
+
+# Task 2
+A = [[3, 0.1, 0.1],
+     [0.1, 4, 0.1],
+     [0.1, 0.1, 5]]
+v = [1, 2, 3]
 tol = 0.00001
-maxiter = 100000
-print("Resulting vector from the Jacobi iteration: " + str(jacobi_iteration(A, b, x0, tol, maxiter)))
+maxiter = 10000
+print("Running the shifted power method on A and v produced: " + str(shifted_power_method(A, v, tol, maxiter)))
+
+# Task 3
+
