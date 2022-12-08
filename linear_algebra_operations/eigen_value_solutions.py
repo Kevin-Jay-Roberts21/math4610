@@ -99,40 +99,64 @@ def shifted_power_method(a, v_0, tol, maxiter):
     return l_0
 
 def shifted_power_special(a, v_0, tol, maxiter):
-    error = 10 * tol
-    iter = 0
-    l_0 = 0
-    initial_guess = []
-    for i in range(0, len(v_0)):
-        initial_guess.append(1)
 
     lmax = power_method_2(a, v_0, tol, maxiter)
     lmin = inverse_power_method(a, v_0, tol, maxiter)
-    lmiddle = int((lmax+lmin)/2) - 0.5 # minus 0.5 because code breaks if mu is too close diagonal element in matrix.
+    lmiddles = []
+    lambdas = []
+    xi = 0
+    for i in range(0, len(a)-2):
+        xi += (lmax+lmin)/len(a)
+        lmiddles.append(int(xi) + 0.5)
 
-    new_matrix = []
-    for i in range(0, len(a)):
-        new_row = []
-        for j in range(0, len(a)):
-            if i == j:
-                new_row.append(lmiddle)
-            else:
-                new_row.append(0)
-        new_matrix.append(new_row)
+    for k in range(0, len(lmiddles)):
 
-    B = difference_of_matrices(a, new_matrix)
-    v = v_0
-    while (error > tol and iter < maxiter):
-        z = jacobi_iteration(B, v, initial_guess, tol, maxiter)
-        y = scalar_mult_of_number_and_vector(1 / L2_norm_of_vector(z), z)
-        w = jacobi_iteration(B, y, initial_guess, tol, maxiter)
-        l_1 = dot_product(y, w)
-        error = abs(l_1 - l_0)
-        l_0 = l_1
-        v = y
+        error = 10 * tol
+        iter = 0
+        l_0 = 0
+        initial_guess = []
+        for i in range(0, len(v_0)):
+            initial_guess.append(1)
+
+        new_matrix = []
+        for i in range(0, len(a)):
+            new_row = []
+            for j in range(0, len(a)):
+                if i == j:
+                    new_row.append(lmiddles[k])
+                else:
+                    new_row.append(0)
+            new_matrix.append(new_row)
+
+        B = difference_of_matrices(a, new_matrix)
+        v = v_0
+        while (error > tol and iter < maxiter):
+            z = jacobi_iteration(B, v, initial_guess, tol, maxiter)
+            y = scalar_mult_of_number_and_vector(1 / L2_norm_of_vector(z), z)
+            w = jacobi_iteration(B, y, initial_guess, tol, maxiter)
+            l_1 = dot_product(y, w)
+            error = abs(l_1 - l_0)
+            l_0 = l_1
+            v = y
+            iter += 1
+
+        lambdas.append(l_0)
+
+    return lambdas
+
+def gauss_seidel(a, b, x0, tol, maxiter):
+    iter = 0
+
+    while (iter < maxiter):
+
+        for i in range(0, len(a)):
+            d = b[i]
+            for j in range(0, len(a)):
+                if (i != j):
+                    d -= a[i][j] * x0[j]
+            x0[i] = d / a[i][i]
         iter += 1
-
-    return l_0
+    return x0
 
 
 def jacobi_iteration(a, b, x0, tol, maxiter):
@@ -152,38 +176,3 @@ def jacobi_iteration(a, b, x0, tol, maxiter):
         r0 = vector_subtraction(b, action_of_matrix_on_vector(a, x1))
 
     return x0
-
-
-    # error = 10 * tol
-    # iter = 0
-    # v = []
-    # r = []
-    # x1 = []
-    # for i in range(0, len(a)):
-    #     x1.append(0)
-    #
-    # for i in range(0, len(a)):
-    #     v.append(x0[i])
-    #
-    # for i in range(0, len(a)):
-    #     sum = b[i]
-    #     for j in range(0, len(a)):
-    #         sum = sum - a[i][j] * v[j]
-    #     r.append(sum)
-    #
-    # while (error > tol and iter < maxiter):
-    #     for i in range(0, len(a)):
-    #         x1[i] = x0[i] + r[i]/a[i][i]
-    #     error = 0.0
-    #     for i in range(0, len(a)):
-    #         diff = x1[i]-x0[i]
-    #         error = error + (diff*diff)
-    #     for i in range(0, len(a)):
-    #         sum = b[i]
-    #         for j in range(0, len(a)):
-    #             sum = sum - (a[i][i] * x1[i])
-    #         r[i] = sum
-    #     for i in range(0, len(a)):
-    #         x0[i] = x1[i]
-    #
-    # return x0

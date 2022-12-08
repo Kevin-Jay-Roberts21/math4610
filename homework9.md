@@ -144,13 +144,61 @@ print("Smallest eigen value: " + str(inverse_power_method(A, v, tol, maxiter)))
 For the corresponding output, I got the following: 
 
 ```
-
+Largest eigen value: 4.020261242101613
+Middle eigenvalue: 2.0269732960709135
+Middle eigenvalue: 1.9890442142199332
+Smallest eigen value: 0.9836400854848657
 ```
 
+These eigenvalues are slightly off and again, that's because of the ``+ 0.5`` in my method to avoid my code breaking. 
 Finally, the method I wrote for this assignment can be found [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/linear_algebra_operations/eigen_value_solutions.py) and is show below: 
 
 ```python
+def shifted_power_special(a, v_0, tol, maxiter):
 
+    lmax = power_method_2(a, v_0, tol, maxiter)
+    lmin = inverse_power_method(a, v_0, tol, maxiter)
+    lmiddles = []
+    lambdas = []
+    xi = 0
+    for i in range(0, len(a)-2):
+        xi += (lmax+lmin)/len(a)
+        lmiddles.append(int(xi) + 0.5)
+
+    for k in range(0, len(lmiddles)):
+
+        error = 10 * tol
+        iter = 0
+        l_0 = 0
+        initial_guess = []
+        for i in range(0, len(v_0)):
+            initial_guess.append(1)
+
+        new_matrix = []
+        for i in range(0, len(a)):
+            new_row = []
+            for j in range(0, len(a)):
+                if i == j:
+                    new_row.append(lmiddles[k])
+                else:
+                    new_row.append(0)
+            new_matrix.append(new_row)
+
+        B = difference_of_matrices(a, new_matrix)
+        v = v_0
+        while (error > tol and iter < maxiter):
+            z = jacobi_iteration(B, v, initial_guess, tol, maxiter)
+            y = scalar_mult_of_number_and_vector(1 / L2_norm_of_vector(z), z)
+            w = jacobi_iteration(B, y, initial_guess, tol, maxiter)
+            l_1 = dot_product(y, w)
+            error = abs(l_1 - l_0)
+            l_0 = l_1
+            v = y
+            iter += 1
+
+        lambdas.append(l_0)
+
+    return lambdas
 ```
 
 ## Task 4 
@@ -158,5 +206,46 @@ Finally, the method I wrote for this assignment can be found [here](https://gith
 I couldn't figure out how to write my code in parallel for this task in python specifically, this will be a future research project for me.
 
 ## Task 5 
+
+For this task I wrote chose to compare the gauss-seidel approximation with the jacobi approximation method just to make 
+sure I computed gauss-seidel correctly. The following inputs I used can be found in my main.py under Homework 9 under Task 5
+in my github file [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/main.py), but I also show what I inputted 
+below: 
+
+```python
+A = [[2, 0.1, 0.1], [0.1, 4, 0.1], [0.1, 0.1, 5]]
+v = [1, 2, 3]
+x0 = [1, 1, 1]
+tol = 0.00001
+maxiter = 10000
+print("Results from Jacobi: " + str(jacobi_iteration(A, v, x0, tol, maxiter)))
+print("Results from Gauss-Seidel: " + str(gauss_seidel(A, v, x0, tol, maxiter)))
+```
+
+The corresponding output I got was the following: 
+
+```
+Results from Jacobi: [0.44720749184374997, 0.4742805785, 0.5815702574375]
+Results from Gauss-Seidel: [0.44720746014238444, 0.4742805575052642, 0.581570239647047]
+```
+
+The outputs suggest that the solution to the linear system is about ``[0.447, 0.474, 0.582]``. The gauss-seidel method I 
+wrote is displayed below but it can also be found [here](https://github.com/Kevin-Jay-Roberts21/math4610/blob/master/linear_algebra_operations/eigen_value_solutions.py):
+
+```python
+def gauss_seidel(a, b, x0, tol, maxiter):
+    iter = 0
+
+    while (iter < maxiter):
+
+        for i in range(0, len(a)):
+            d = b[i]
+            for j in range(0, len(a)):
+                if (i != j):
+                    d -= a[i][j] * x0[j]
+            x0[i] = d / a[i][i]
+        iter += 1
+    return x0
+```
 
 
