@@ -28,8 +28,25 @@ The Kronecker Product of Matrix A and Matrix B is:
 
 The code I wrote to perform this operation: 
 
-```
+```python
+def kronecker_matrix_product(a, b):
 
+    new_matrix = []
+    for i in range(len(a[0]) * len(b[0])):
+        new_matrix.append([0] * (len(a) * len(b)))
+
+    for i in range(len(a[0])):
+        for k in range(len(a)):
+            for j in range(len(b[0])):
+                for l in range(len(b)):
+                    new_matrix[i * len(b[0]) + k][j * len(b) + l] = a[i][j] * b[k][l];
+
+    string = ""
+
+    for i in range(len(a[0]) * len(b[0])):
+        string += (str(new_matrix[i]) + "\n")
+
+    return string
 ```
 
 
@@ -125,7 +142,7 @@ def power_method_2(a, v_0, tol, maxiter):
 
 ## Task 4 
 
-
+I couldn't figure out how to write my code in parallel for this task in python specifically, this will be a future research project for me.
 
 ## Task 5 
 

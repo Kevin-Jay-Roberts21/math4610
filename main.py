@@ -385,13 +385,27 @@ from linear_algebra_operations.eigen_value_solutions import *
 # print("The smallest eigenvalue of the matrix A: " + str(inverse_power_method(A, v, tol, maxiter)))
 
 # Task 2
-A = [[3, 0.1, 0.1],
-     [0.1, 4, 0.1],
-     [0.1, 0.1, 5]]
-v = [1, 2, 3]
-tol = 0.00001
-maxiter = 10000
-print("Running the shifted power method on A and v produced: " + str(shifted_power_method(A, v, tol, maxiter)))
+# A = [[1, 0.1, 0.1], [0.1, 3, 0.1], [0.1, 0.1, 2]]
+# v = [1, 2, 3]
+# tol = 0.00001
+# maxiter = 10000
+# print(power_method_2(A, v, tol, maxiter))
+# print("Running the shifted power method on A and v produced: " + str(shifted_power_method(A, v, tol, maxiter)))
+# print(inverse_power_method(A, v, tol, maxiter))
 
 # Task 3
+A = [[1, 0.1, 0.1, 0.1],
+     [0.1, 3, 0.1, 0.1],
+     [0.1, 0.1, 2, 0.1],
+     [0.1, 0.1, 0.1, 4]]
+v = [1, 2, 3, 4]
+tol = 0.00001
+maxiter = 10000
+print("Largest eigen value: " + str(power_method_2(A, v, tol, maxiter)))
+middle_eigen_values = shifted_power_special(A, v, tol, maxiter)
+for i in range(0, len(middle_eigen_values)):
+    print("Middle eigenvalue: " + str(middle_eigen_values[i]))
+print("Smallest eigen value: " + str(inverse_power_method(A, v, tol, maxiter)))
+
+# Task 5
 

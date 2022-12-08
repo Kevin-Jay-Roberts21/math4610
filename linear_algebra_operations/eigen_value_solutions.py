@@ -72,20 +72,67 @@ def shifted_power_method(a, v_0, tol, maxiter):
 
     lmax = power_method_2(a, v_0, tol, maxiter)
     lmin = inverse_power_method(a, v_0, tol, maxiter)
+    lmiddle = int((lmax+lmin)/2) - 0.5 # minus 0.5 because code breaks if mu is too close diagonal element in matrix.
 
-    z = jacobi_iteration(a, v_0, initial_guess, tol, maxiter)
+    new_matrix = []
+    for i in range(0, len(a)):
+        new_row = []
+        for j in range(0, len(a)):
+            if i == j:
+                new_row.append(lmiddle)
+            else:
+                new_row.append(0)
+        new_matrix.append(new_row)
 
+    B = difference_of_matrices(a, new_matrix)
+    v = v_0
     while (error > tol and iter < maxiter):
-        y = scalar_mult_of_number_and_vector(1/L2_norm_of_vector(z), z)
-        w = jacobi_iteration(a, y, initial_guess, tol, maxiter)
-        l_1 = dot_product(w, y)
+        z = jacobi_iteration(B, v, initial_guess, tol, maxiter)
+        y = scalar_mult_of_number_and_vector(1 / L2_norm_of_vector(z), z)
+        w = jacobi_iteration(B, y, initial_guess, tol, maxiter)
+        l_1 = dot_product(y, w)
         error = abs(l_1 - l_0)
-        z = w
         l_0 = l_1
+        v = y
         iter += 1
 
-    return 1/l_0
+    return l_0
 
+def shifted_power_special(a, v_0, tol, maxiter):
+    error = 10 * tol
+    iter = 0
+    l_0 = 0
+    initial_guess = []
+    for i in range(0, len(v_0)):
+        initial_guess.append(1)
+
+    lmax = power_method_2(a, v_0, tol, maxiter)
+    lmin = inverse_power_method(a, v_0, tol, maxiter)
+    lmiddle = int((lmax+lmin)/2) - 0.5 # minus 0.5 because code breaks if mu is too close diagonal element in matrix.
+
+    new_matrix = []
+    for i in range(0, len(a)):
+        new_row = []
+        for j in range(0, len(a)):
+            if i == j:
+                new_row.append(lmiddle)
+            else:
+                new_row.append(0)
+        new_matrix.append(new_row)
+
+    B = difference_of_matrices(a, new_matrix)
+    v = v_0
+    while (error > tol and iter < maxiter):
+        z = jacobi_iteration(B, v, initial_guess, tol, maxiter)
+        y = scalar_mult_of_number_and_vector(1 / L2_norm_of_vector(z), z)
+        w = jacobi_iteration(B, y, initial_guess, tol, maxiter)
+        l_1 = dot_product(y, w)
+        error = abs(l_1 - l_0)
+        l_0 = l_1
+        v = y
+        iter += 1
+
+    return l_0
 
 
 def jacobi_iteration(a, b, x0, tol, maxiter):
