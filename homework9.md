@@ -248,4 +248,5 @@ def gauss_seidel(a, b, x0, tol, maxiter):
     return x0
 ```
 
-
+The reason we cannot write the gauss-seidel method in parallel is because it's a method involving recursion. More specifically, 
+this method requires information from each previous iteration, and this will not work if we want to use multiple threads.
